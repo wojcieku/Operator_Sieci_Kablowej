@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns = "http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edytuj dane operatora</title>
+</head>
+<body>
+<div align="center">
+    <h1>Edytuj dane operatora</h1>
+    <br/>
+    <form action="#" th:action="@{/update}" method ="post">
+        <input type = "hidden" th:value ="${operator.nr_operatora}" name = "nr_operatora">
+        <input type = "hidden" th:value ="${operator.nr_adresu}" name = "nr_adresuFK">
+        <input type = "hidden" th:value ="${adres.nr_adresu}" name = "nr_adresu">
+        <table border = "1" cellpadding="10">
+            <tr>
+                <td>Nazwa operatora:</td>
+                <td><input type = "text" th:value="${operator.nazwa}" name ="nazwa" required></td>
+
+            </tr>
+            <tr>
+                <td>Data założenia:</td>
+                <td><input type = "date" th:value="${operator.data_zalozenia}" name = "data_zalozenia" required></td>
+            </tr>
+            <tr>
+                <td>Miasto:</td>
+                <!--sprawdzenie w obiekcie czy to sam string (przed insertem)?-->
+                <td><input type = "text" th:value = "${adres.miasto}" name = "miasto" required></td>
+
+            </tr>
+            <tr>
+                <td>Ulica:</td>
+                <td><input type ="text" th:value = "${adres.ulica}" name = "ulica" required></td>
+            </tr>
+            <tr>
+                <td>Numer domu:</td>
+                <td><input type = "number" th:value = "${adres.nr_domu}" name = "nr_domu" min = "1" required></td>
+            </tr>
+            <tr>
+                <td>Numer lokalu:</td>
+                <td><input type = "text" th:value = "${adres.nr_lokalu}" name = "nr_lokalu" min = "1" ></td>
+
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Zapisz</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

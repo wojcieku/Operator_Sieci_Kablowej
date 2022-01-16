@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Operatorzy Manager Application</title>
+</head>
+<body>
+<div align ="center">
+    <!--Page Header -->
+    <h1>Dane operatora</h1>
+    <a href = "/new">Dodaj nowego operatora</a>
+
+    <br/><br/>
+    <!--Table-->
+    <table border = "1" cellpadding="10">
+        
+        <!--Table header -->
+        <thead>
+            <tr>
+                <th>Nazwa</th>
+                <th>Data Założenia</th>
+                <th>Adres</th>
+                <th>Akcja</th>
+            </tr>
+        </thead>
+        <!--tbody-->
+        <tbody>
+            <tr th:each = "operator : ${operatorList}">
+                <td th:text = "${operator.getNazwa()}">Nazwa</td>
+                <td th:text = "${operator.getData_zalozenia()}">Data Zalozenia</td>
+                <td th:text = "${operator.getAdres()}">Adres</td>
+                <td>
+                    <a th:href ="@{'/edit/'+${operator.nr_operatora}}">Edytuj</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a th:href = "@{'/delete/'+${operator.nr_operatora}}">Usuń</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
