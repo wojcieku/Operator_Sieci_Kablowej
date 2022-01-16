@@ -28,12 +28,12 @@
         <tbody>
             <tr th:each = "operator : ${operatorList}">
                 <td th:text = "${operator.getNazwa()}">Nazwa</td>
-                <td th:text = "${operator.getData_zalozenia()}">Data Zalozenia</td>
+                <td th:text = "${operator.getDataZalozenia()}">Data Zalozenia</td>
                 <td th:text = "${operator.getAdres()}">Adres</td>
                 <td>
-                    <a th:href ="@{'/edit/'+${operator.nr_operatora}}">Edytuj</a>
+                    <a th:href ="@{'/edit/'+${operator.nrOperatora}}">Edytuj</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a th:href = "@{'/delete/'+${operator.nr_operatora}}">Usuń</a>
+                    <a th:href = "@{'/delete/'+${operator.nrOperatora}}">Usuń</a>
                 </td>
             </tr>
         </tbody>

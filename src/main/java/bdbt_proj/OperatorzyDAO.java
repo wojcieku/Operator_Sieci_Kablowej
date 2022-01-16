@@ -43,11 +43,9 @@ public class OperatorzyDAO {
         return Boolean.TRUE;
     }
     public Operator get(String Nr_operatora) {
-
-//        Object[] args = {Nr_operatora};
-        String sql = "SELECT * FROM Operatorzy where Nr_operatora = "+Nr_operatora;
-        Operator operator = jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(Operator.class));
-        operator.setData_zalozenia(operator.getData_zalozenia().substring(0,10)); //wyciagniecie samej daty bez godziny
+        String sql = "SELECT * FROM Operatorzy where Nr_operatora = ?";
+        Operator operator = jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(Operator.class), Nr_operatora);
+        operator.setDataZalozenia(operator.getDataZalozenia().substring(0,10)); //wyciagniecie samej daty bez godziny
         return operator;
     }
 

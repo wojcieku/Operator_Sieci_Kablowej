@@ -1,84 +1,84 @@
 package bdbt_proj;
 
 public class Adres {
-    private String Nr_adresu;
-    private String Miasto;
-    private String Ulica;
-    private String Nr_domu;
-    private String Nr_lokalu;
-    private String Nr_poczty = "1";
+    private String nrAdresu;
+    private String miasto;
+    private String ulica;
+    private String nrDomu;
+    private String nrLokalu;
+    private String nrPoczty = "1";
 
     public Adres() {
     }
 
 
-    public Adres(String nr_adresu, String miasto, String ulica, String nr_domu, String nr_lokalu, String nr_poczty) {
-        Nr_adresu = nr_adresu;
-        Miasto = miasto;
-        Ulica = ulica;
-        Nr_domu = nr_domu;
-        Nr_lokalu = nr_lokalu;
-        Nr_poczty = nr_poczty;
+    public Adres(String nrAdresu, String miasto, String ulica, String nrDomu, String nrLokalu, String nrPoczty) {
+        this.nrAdresu = nrAdresu;
+        this.miasto = miasto;
+        this.ulica = ulica;
+        this.nrDomu = nrDomu;
+        this.nrLokalu = nrLokalu;
+        this.nrPoczty = nrPoczty;
     }
 
-    public void setNr_adresu(String nr_adresu) {
-        Nr_adresu = nr_adresu;
+    public void setNrAdresu(String nrAdresu) {
+        this.nrAdresu = nrAdresu;
     }
 
-    public void setNr_domu(String nr_domu) {
-        Nr_domu = nr_domu;
+    public void setNrDomu(String nrDomu) {
+        this.nrDomu = nrDomu;
     }
 
-    public void setNr_lokalu(String nr_lokalu) {
-        Nr_lokalu = nr_lokalu;
+    public void setNrLokalu(String nrLokalu) {
+        this.nrLokalu = nrLokalu;
     }
 
-    public void setNr_poczty(String nr_poczty) {
-        Nr_poczty = nr_poczty;
+    public void setNrPoczty(String nrPoczty) {
+        this.nrPoczty = nrPoczty;
     }
 
 
     public String getMiasto() {
-        return Miasto;
+        return miasto;
     }
 
     public void setMiasto(String miasto) {
-        Miasto = miasto;
+        this.miasto = miasto;
     }
 
     public String getUlica() {
-        return Ulica;
+        return ulica;
     }
 
     public void setUlica(String ulica) {
-        Ulica = ulica;
+        this.ulica = ulica;
     }
 
-    public String getNr_adresu() {
-        return Nr_adresu;
+    public String getNrAdresu() {
+        return nrAdresu;
     }
 
-    public String getNr_domu() {
-        return Nr_domu;
+    public String getNrDomu() {
+        return nrDomu;
     }
 
-    public String getNr_lokalu() {
-        return Nr_lokalu;
+    public String getNrLokalu() {
+        return nrLokalu;
     }
 
-    public String getNr_poczty() {
-        return Nr_poczty;
+    public String getNrPoczty() {
+        return nrPoczty;
     }
 
     @Override
     public String toString() {
         return "Adres{" +
-                "Nr_adresu='" + Nr_adresu + '\'' +
-                ", Miasto='" + Miasto + '\'' +
-                ", Ulica='" + Ulica + '\'' +
-                ", Nr_domu='" + Nr_domu + '\'' +
-                ", Nr_lokalu='" + Nr_lokalu + '\'' +
-                ", Nr_poczty='" + Nr_poczty + '\'' +
+                "Nr_adresu='" + nrAdresu + '\'' +
+                ", Miasto='" + miasto + '\'' +
+                ", Ulica='" + ulica + '\'' +
+                ", Nr_domu='" + nrDomu + '\'' +
+                ", Nr_lokalu='" + nrLokalu + '\'' +
+                ", Nr_poczty='" + nrPoczty + '\'' +
                 '}';
     }
 }

@@ -1,20 +1,20 @@
 package bdbt_proj;
 
 public class Operator {
-    private String Nr_operatora;
-    private String Nazwa;
-    private String Data_zalozenia;
-    private String Nr_adresu;
+    private String nrOperatora;
+    private String nazwa;
+    private String dataZalozenia;
+    private String nrAdresu;
     private String adres;
 
     public Operator() {
     }
 
-    public Operator(String nr_operatora, String nazwa, String data_zalozenia, String nr_adresu, String adres) {
-        Nr_operatora = nr_operatora;
-        Nazwa = nazwa;
-        Data_zalozenia = data_zalozenia;
-        Nr_adresu = nr_adresu;
+    public Operator(String nr_operatora, String nazwa, String data_zalozenia, String nrAdresu, String adres) {
+        this.nrOperatora = nr_operatora;
+        this.nazwa = nazwa;
+        dataZalozenia = data_zalozenia;
+        this.nrAdresu = nrAdresu;
         this.adres = adres;
     }
 
@@ -28,35 +28,35 @@ public class Operator {
 //    }
 
     public String getNazwa() {
-        return Nazwa;
+        return nazwa;
     }
 
     public void setNazwa(String nazwa) {
-        Nazwa = nazwa;
+        this.nazwa = nazwa;
     }
 
-    public String getNr_operatora() {
-        return Nr_operatora;
+    public String getNrOperatora() {
+        return nrOperatora;
     }
 
-    public void setNr_operatora(String nr_operatora) {
-        Nr_operatora = nr_operatora;
+    public void setNrOperatora(String nrOperatora) {
+        this.nrOperatora = nrOperatora;
     }
 
-    public String getNr_adresu() {
-        return Nr_adresu;
+    public String getNrAdresu() {
+        return nrAdresu;
     }
 
-    public void setNr_adresu(String nr_adresu) {
-        Nr_adresu = nr_adresu;
+    public void setNrAdresu(String nrAdresu) {
+        this.nrAdresu = nrAdresu;
     }
 
-    public String getData_zalozenia() {
-        return Data_zalozenia;
+    public String getDataZalozenia() {
+        return dataZalozenia;
     }
 
-    public void setData_zalozenia(String data_zalozenia) {
-        Data_zalozenia = data_zalozenia;
+    public void setDataZalozenia(String dataZalozenia) {
+        this.dataZalozenia = dataZalozenia;
     }
 
     public String getAdres() {
@@ -78,10 +78,10 @@ public class Operator {
     @Override
     public String toString() {
         return "Operator{" +
-                "Nr_operatora=" + Nr_operatora +
-                ", Nazwa='" + Nazwa + '\'' +
-                ", Data_zalozenia='" + Data_zalozenia + '\'' +
-                ", Nr_adresu=" + Nr_adresu + '\'' +
+                "Nr_operatora=" + nrOperatora +
+                ", Nazwa='" + nazwa + '\'' +
+                ", Data_zalozenia='" + dataZalozenia + '\'' +
+                ", Nr_adresu=" + nrAdresu + '\'' +
                 ", adres='" + adres + '\'' +
                 '}';
     }

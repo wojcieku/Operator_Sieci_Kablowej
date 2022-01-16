@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.List;
@@ -56,7 +55,7 @@ public class AppController implements WebMvcConfigurer {
     public String save(@ModelAttribute("operator") Operator operator, @ModelAttribute("adres") Adres adres) {
         if (adresyDAO.validate(adres) == Boolean.TRUE) {
             String adresId = adresyDAO.save(adres);
-            operator.setNr_adresu(adresId);
+            operator.setNrAdresu(adresId);
             operatorzyDAO.save(operator);
             return "redirect:/operatorData";
         } else return "redirect:/input_error";
@@ -66,7 +65,7 @@ public class AppController implements WebMvcConfigurer {
     public ModelAndView showEditForm(@PathVariable(name = "Nr_operatora") String Nr_operatora) {
         ModelAndView mav = new ModelAndView("edit_Operator_form");
         Operator operator = operatorzyDAO.get(Nr_operatora);
-        Adres adres = adresyDAO.get(operator.getNr_adresu()); //stad adres dla danego operatora B)
+        Adres adres = adresyDAO.get(operator.getNrAdresu()); //stad adres dla danego operatora B)
         mav.addObject("operator", operator);
         mav.addObject("adres", adres);
         System.out.println(operator);
@@ -79,7 +78,7 @@ public class AppController implements WebMvcConfigurer {
         System.out.println(operator);
         System.out.println(adres);
         operatorzyDAO.update(operator);
-        adres.setNr_adresu(operator.getNr_adresu());
+        adres.setNrAdresu(operator.getNrAdresu());
         adresyDAO.update(adres);
         return "redirect:/operatorData";
     }

@@ -44,8 +44,8 @@ public class AdresyDAO {
         else return Boolean.FALSE;
     }
     public Adres get(String Nr_adresu){
-        String sql = "SELECT * FROM Adresy where Nr_adresu = "+Nr_adresu;
-        Adres adres = jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(Adres.class));
+        String sql = "SELECT * FROM Adresy where Nr_adresu = ?";
+        Adres adres = jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(Adres.class),Nr_adresu);
         return adres;
     }
     public void update(Adres adres){

@@ -9,9 +9,9 @@
     <h1>Edytuj dane operatora</h1>
     <br/>
     <form action="#" th:action="@{/update}" method ="post">
-        <input type = "hidden" th:value ="${operator.nr_operatora}" name = "nr_operatora">
-        <input type = "hidden" th:value ="${operator.nr_adresu}" name = "nr_adresuFK">
-        <input type = "hidden" th:value ="${adres.nr_adresu}" name = "nr_adresu">
+        <input type = "hidden" th:value ="${operator.nrOperatora}" name = "nr_operatora">
+        <input type = "hidden" th:value ="${operator.nrAdresu}" name = "nr_adresuFK">
+        <input type = "hidden" th:value ="${adres.nrAdresu}" name = "nr_adresu">
         <table border = "1" cellpadding="10">
             <tr>
                 <td>Nazwa operatora:</td>
@@ -20,7 +20,7 @@
             </tr>
             <tr>
                 <td>Data założenia:</td>
-                <td><input type = "date" th:value="${operator.data_zalozenia}" name = "data_zalozenia" required></td>
+                <td><input type = "date" th:value="${operator.dataZalozenia}" name = "data_zalozenia" required></td>
             </tr>
             <tr>
                 <td>Miasto:</td>
@@ -34,11 +34,11 @@
             </tr>
             <tr>
                 <td>Numer domu:</td>
-                <td><input type = "number" th:value = "${adres.nr_domu}" name = "nr_domu" min = "1" required></td>
+                <td><input type = "number" th:value = "${adres.nrDomu}" name = "nr_domu" min = "1" required></td>
             </tr>
             <tr>
                 <td>Numer lokalu:</td>
-                <td><input type = "text" th:value = "${adres.nr_lokalu}" name = "nr_lokalu" min = "1" ></td>
+                <td><input type = "text" th:value = "${adres.nrLokalu}" name = "nr_lokalu" min = "1" ></td>
 
             </tr>
             <tr>
