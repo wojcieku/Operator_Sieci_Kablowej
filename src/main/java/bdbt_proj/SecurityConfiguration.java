@@ -34,6 +34,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/", "/index").permitAll()
+                .antMatchers("/resources/static/**").permitAll()
+                .antMatchers("/main").authenticated()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -42,6 +44,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/main")
                 .and()
                 .logout()
+                .logoutSuccessUrl("/index")
                 .permitAll();
     }
 }

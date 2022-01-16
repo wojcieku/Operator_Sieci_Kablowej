@@ -8,6 +8,10 @@
 <div align="center">
     <h1>Strona główna</h1>
     <a href="http://localhost:8080/operatorData">Zobacz dane operatorów</a>
+    <br/><br>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Wyloguj"/>
+    </form>
 </div>
 </body>
 </html>

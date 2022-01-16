@@ -22,19 +22,19 @@ public class AppController implements WebMvcConfigurer {
     @Autowired
     private AdresyDAO adresyDAO;
 
-    public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/index").setViewName("index");
-        registry.addViewController("/").setViewName("index");
-        registry.addViewController("/main").setViewName("main");
-        registry.addViewController("/login").setViewName("login");
-//        registry.addViewController("/operatorData").setViewName("operatorData"); TODO is it needed?
-    }
 
-    @RequestMapping("/")
+    @RequestMapping(value = {"/index","/"} )
     public String viewHomePage(Model model) {
         return "index";
     }
-
+    @RequestMapping("/login")
+    public String loginPage(Model model){
+        return "login";
+    }
+    @RequestMapping("/main")
+    public String mainPage(Model model){
+        return "main";
+    }
 
     @RequestMapping("/operatorData")
     public String viewOperatorDataPage(Model model) {
