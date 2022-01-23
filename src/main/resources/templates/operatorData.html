@@ -4,8 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Operatorzy Manager Application</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
 </head>
+
 <body>
+<div class="container">
 <div align ="center">
     <!--Page Header -->
     <h1>Dane operatora</h1>
@@ -13,31 +16,34 @@
 
     <br/><br/>
     <!--Table-->
-    <table border = "1" cellpadding="10">
+    <table class="table table-striped">
         
         <!--Table header -->
         <thead>
-            <tr>
-                <th>Nazwa</th>
-                <th>Data Założenia</th>
-                <th>Adres</th>
-                <th>Akcja</th>
+            <tr class = "bg-dark text-white">
+                <th scope="col">Nazwa</th>
+                <th scope="col">Numer</th>
+                <th scope="col">Data Założenia</th>
+                <th scope="col">Adres</th>
+                <th scope="col">Akcja</th>
             </tr>
         </thead>
         <!--tbody-->
         <tbody>
-            <tr th:each = "operator : ${operatorList}">
+            <tr th:each = "operator, iStat : ${operatorList}">
                 <td th:text = "${operator.getNazwa()}">Nazwa</td>
+                <td th:text = "${iStat.index}" >Numer</td>
                 <td th:text = "${operator.getDataZalozenia()}">Data Zalozenia</td>
                 <td th:text = "${operator.getAdres()}">Adres</td>
                 <td>
-                    <a th:href ="@{'/edit/'+${operator.nrOperatora}}">Edytuj</a>
+                     <a th:href ="@{'/edit/'+${operator.nrOperatora}}">Edytuj</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <a th:href = "@{'/delete/'+${operator.nrOperatora}}">Usuń</a>
                 </td>
             </tr>
         </tbody>
     </table>
+</div>
 </div>
 
 </body>

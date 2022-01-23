@@ -2,6 +2,8 @@ package bdbt_proj;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -13,7 +15,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.List;
 
-@Configuration
 @Controller
 public class AppController implements WebMvcConfigurer {
     @Autowired
@@ -32,6 +33,11 @@ public class AppController implements WebMvcConfigurer {
     }
     @RequestMapping("/main")
     public String mainPage(Model model){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipalName = authentication.getName();
+        var currentPrincipalAuthorities = authentication.getAuthorities();
+        System.out.println(currentPrincipalName);
+        System.out.println(currentPrincipalAuthorities);
         return "main";
     }
 
@@ -70,14 +76,13 @@ public class AppController implements WebMvcConfigurer {
         mav.addObject("adres", adres);
         System.out.println(operator);
         System.out.println(adres);
-        return mav; //czemu nie po prostu String edit_Operator_form?
+        return mav;
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String update(@ModelAttribute("operator") Operator operator, @ModelAttribute("adres") Adres adres) {
-        System.out.println(operator);
-        System.out.println(adres);
         operatorzyDAO.update(operator);
+        System.out.println("TEST: "+operator);
         adres.setNrAdresu(operator.getNrAdresu());
         adresyDAO.update(adres);
         return "redirect:/operatorData";

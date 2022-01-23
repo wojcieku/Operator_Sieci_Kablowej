@@ -27,7 +27,7 @@ public class OperatorzyDAO {
                 "FROM operatorzy INNER JOIN adresy ON adresy.nr_adresu=operatorzy.nr_adresu";
 
         List<Operator> operatorList = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Operator.class));
-
+        System.out.println(operatorList);
         return operatorList;
     }
     public void save(Operator operator){
@@ -46,11 +46,13 @@ public class OperatorzyDAO {
         String sql = "SELECT * FROM Operatorzy where Nr_operatora = ?";
         Operator operator = jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(Operator.class), Nr_operatora);
         operator.setDataZalozenia(operator.getDataZalozenia().substring(0,10)); //wyciagniecie samej daty bez godziny
+        System.out.println(operator);
         return operator;
     }
 
     public void update(Operator operator){
-        String sql = "UPDATE OPERATORZY SET nazwa=:nazwa, data_zalozenia=:data_zalozenia WHERE nr_operatora=:nr_operatora";
+        System.out.println(operator);
+        String sql = "UPDATE OPERATORZY SET nazwa=:nazwa, data_zalozenia=:dataZalozenia WHERE nr_operatora=:nrOperatora";
         BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(operator);
         NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);
 

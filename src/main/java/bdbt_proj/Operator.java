@@ -19,14 +19,6 @@ public class Operator {
     }
 
 
-    //    public int getNr_operatora() {
-//        return Nr_operatora;
-//    }
-//
-//    public void setNr_operatora(int nr_operatora) {
-//        Nr_operatora = nr_operatora;
-//    }
-
     public String getNazwa() {
         return nazwa;
     }
@@ -67,13 +59,6 @@ public class Operator {
         this.adres = adres;
     }
 
-//    public int getNr_adresu() {
-//        return Nr_adresu;
-//    }
-//
-//    public void setNr_adresu(int nr_adresu) {
-//        Nr_adresu = nr_adresu;
-//    }
 
     @Override
     public String toString() {

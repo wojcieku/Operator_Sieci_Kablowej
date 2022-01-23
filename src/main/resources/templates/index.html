@@ -1,5 +1,7 @@
 <!DOCTYPE HTML>
+
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8"/>
     <title>Welcome Page</title>
@@ -7,10 +9,15 @@
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
 
 </head>
+<style>
+    .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+        background-color: #e0e0e0;
+    }
+</style>
 <body>
 
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary static-top">
     <div class="container">
         <a class="navbar-brand" href="/">BIG ESSA</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
@@ -48,6 +55,36 @@
                 <label>Welcome to the home page!</label>
                 <div>If you want to login, click  <a th:href="@{/main}"><b>here</b></a> or in the upper right corner.</div>
             </div>
+            <table class="table">
+                <thead>
+                <tr class = "bg-dark text-white">
+                    <th scope="col">#</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Handle</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                </tr>
+                </tbody>
+            </table>
 
         </div>
     </div>
