@@ -8,13 +8,56 @@
 </head>
 
 <body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">BIG ESSA</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <div class="dropdown">
+                        <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Oferty
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Internet</a>
+                            <a class="dropdown-item" href="#">Telewizja</a>
+                            <a class="dropdown-item" href="#">Telefon</a>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/main}">Main</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/main}">Login</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<br/>
 <div class="container">
 <div align ="center">
     <!--Page Header -->
-    <h1>Dane operatora</h1>
-    <a href = "/new">Dodaj nowego operatora</a>
+    <br/>
+    <h1 class="header">Dane operatora</h1>
+    <a href = "/new" target="_blank">Dodaj nowego operatora</a>
 
-    <br/><br/>
+    <br/><br/><br/>
     <!--Table-->
     <table class="table table-striped">
         
@@ -36,15 +79,32 @@
                 <td th:text = "${operator.getDataZalozenia()}">Data Zalozenia</td>
                 <td th:text = "${operator.getAdres()}">Adres</td>
                 <td>
-                     <a th:href ="@{'/edit/'+${operator.nrOperatora}}">Edytuj</a>
+                     <a class="btn btn-primary" th:href ="@{'/edit/'+${operator.nrOperatora}}" role="button">Edytuj</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a th:href = "@{'/delete/'+${operator.nrOperatora}}">Usuń</a>
+                    <a class="btn btn-danger" th:href = "@{'/delete/'+${operator.nrOperatora}}" role="button">Usuń</a>
                 </td>
             </tr>
         </tbody>
     </table>
 </div>
 </div>
+<div class="bottom">
+    <!-- Footer -->
+    <footer class="page-footer bg-dark text-white">
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">© 2020 Copyright:
+            Radosław Godlewski, Jakub Wojciechowski
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->
+</div>
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 
 </body>
 </html>

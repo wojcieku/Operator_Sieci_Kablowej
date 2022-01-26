@@ -1,7 +1,6 @@
 package bdbt_proj;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -32,13 +31,19 @@ public class AppController implements WebMvcConfigurer {
         return "login";
     }
     @RequestMapping("/main")
-    public String mainPage(Model model){
+    public String adminMainPage(Model model){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentPrincipalName = authentication.getName();
+        //TODO tutaj KlientDAO bierze imie z bazy na podstawie currentPrincipalName
         var currentPrincipalAuthorities = authentication.getAuthorities();
         System.out.println(currentPrincipalName);
         System.out.println(currentPrincipalAuthorities);
         return "main";
+    }
+
+    @RequestMapping("/userMain")
+    public String userMainPage(Model model){
+        return "userMain";
     }
 
     @RequestMapping("/operatorData")
