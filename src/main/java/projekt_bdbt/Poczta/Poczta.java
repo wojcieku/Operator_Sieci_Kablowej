@@ -1,24 +1,33 @@
-package bdbt_proj;
+package projekt_bdbt.Poczta;
 
 public class Poczta {
-    private String nrPoczty;
-    private String kodPocztowy;
-    private String poczta;
-
+    int nrPoczty;
+    String kodPocztowy;
+    String poczta;
     public Poczta() {
-    }
 
-    public Poczta(String nrPoczty, String kodPocztowy, String poczta) {
+    }
+    public Poczta(int nrPoczty, String kodPocztowy, String poczta) {
+        super();
         this.nrPoczty = nrPoczty;
         this.kodPocztowy = kodPocztowy;
         this.poczta = poczta;
     }
 
-    public String getNrPoczty() {
+    @Override
+    public String toString() {
+        return "Poczta{" +
+                "nrPoczty=" + nrPoczty +
+                ", kodPocztowy='" + kodPocztowy + '\'' +
+                ", poczta='" + poczta + '\'' +
+                '}';
+    }
+
+    public int getNrPoczty() {
         return nrPoczty;
     }
 
-    public void setNrPoczty(String nrPoczty) {
+    public void setNrPoczty(int nrPoczty) {
         this.nrPoczty = nrPoczty;
     }
 
@@ -36,14 +45,5 @@ public class Poczta {
 
     public void setPoczta(String poczta) {
         this.poczta = poczta;
-    }
-
-    @Override
-    public String toString() {
-        return "Poczta{" +
-                "nrPoczty='" + nrPoczty + '\'' +
-                ", kodPocztowy='" + kodPocztowy + '\'' +
-                ", poczta='" + poczta + '\'' +
-                '}';
     }
 }

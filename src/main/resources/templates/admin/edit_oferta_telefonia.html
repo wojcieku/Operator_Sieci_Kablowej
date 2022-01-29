@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Edytuj Ofertę</title>
+</head>
+<body>
+    <div align = "center">
+        <h1>Edytuj Ofertę</h1>
+        <br>
+        <form action="#" th:action = "@{/update_oferta_telefonia}" method = "post">
+            <table border = "1" cellpadding = "10">
+                <tr>
+                    <td>Numer oferty:</td>
+                    <td><input type = "text" th:value = "${ofertaTelefonia.nrOferty}" name = "nrOferty" readonly = "readonly" ></td>
+                </tr>
+                <tr>
+                    <td>Pakiet Danych [GB]:</td>
+                    <td><input type = "Number" th:value = "${ofertaTelefonia.pakietDanych}" name = "pakietDanych" required></td>
+                </tr>
+                <tr>
+                    <td>Pakiet połączeń krajowych [minuty]:</td>
+                    <td><input type = "Number" th:value = "${ofertaTelefonia.pakietPolaczenKrajowych}" name = "pakietPolaczenKrajowych" required></td>
+                </tr>
+
+                <tr>
+                    <td>Pakiet połączeń zagranicznych [minuty]:</td>
+                    <td><input type = "Number" th:value = "${ofertaTelefonia.pakietPolaczenZagranica}" name = "pakietPolaczenZagranica"></td>
+                </tr>
+
+                <tr>
+                    <td>Pakiet SMS:</td>
+                    <td><input type = "text" th:value = "${ofertaTelefonia.pakietWiadomosci}" name = "pakietWiadomosci" required></td>
+                </tr>
+                <tr>
+                    <td>Koszt SMS po wyczerpaniu pakietu:</td>
+                    <td><input type = "text" th:value = "${ofertaTelefonia.kosztWiadomosci}" name = "kosztWiadomosci" required></td>
+                </tr>
+                <tr>
+                    <td>Koszt połączeń krajowych po wyczerpaniu pakietu [zł/minuta]:</td>
+                    <td><input type = "text" th:value = "${ofertaTelefonia.polaczeniaKrajoweKoszt}" name = "polaczeniaKrajoweKoszt" required></td>
+                </tr>
+                <tr>
+                    <td>Koszt połączeń zagranicznych po wyczerpaniu pakietu [zł/minuta]:</td>
+                    <td><input type = "text" th:value = "${ofertaTelefonia.polaczeniaZagranicaKoszt}" name = "polaczeniaZagranicaKoszt" required></td>
+                </tr>
+                <tr>
+                    <td>Nazwa Generacji:</td>
+                    <td><input type = "text" th:value = "${ofertaTelefonia.nazwaGeneracji}" name = "nazwaGeneracji" required></td>
+                </tr>
+                <tr>
+                    <td>Opis Generacji:</td>
+                    <td><input type = "text" th:value = "${ofertaTelefonia.opis}" name = "opis" required></td>
+                </tr>
+                <tr>
+                    <td>Czas trwania:</td>
+                    <td><input type = "text" th:value = "${ofertaTelefonia.czasTrwania}" name = "czasTrwania" required></td>
+                </tr>
+                <tr>
+                    <td>Cena:</td>
+                    <td><input type = "Number" step = "0.01" th:value = "${ofertaTelefonia.cena}" name = "cena" required></td>
+                </tr>
+                <tr>
+                <td>Dodatki do umowy:</td>
+                    <td><select id = "dodatkiDoUmowy" th:value = "${ofertaTelefonia.dodatkiDoUmowy}" name = "dodatkiDoUmowy" required>
+                        <option value = "Bezpieczny Internet">Bezpieczny Internet</option>
+                        <option value = "Telewizja Internetowa">Telewizja Internetowa</option>
+                        <option value = "Inny">Inny</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Koszt wypowiedzenia:</td>
+                    <td><input type = "Number" step = "0.01" th:value = "${ofertaTelefonia.kosztWypowiedzenia}" name = "kosztWypowiedzenia" required></td>
+                </tr>
+                <tr>
+                    <td colspan = "2"><button type = "submit">Zapisz</button>
+                    </td>
+                </tr>
+            </table>
+
+        </form>
+
+    </div>
+</body>
+</html>

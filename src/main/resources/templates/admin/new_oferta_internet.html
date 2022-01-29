@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang = "pl" xmlns = "http://www.w3.org/1999/xhtml" xmlns:th = "http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="style1.css">
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+</head>
+<body>
+    <!--
+    <nav>
+        <ul>
+            <li><a href="#">Strona główna</a></li>
+            <li><a href="#">Strona główna</a></li>
+            <li><a href="#">Strona główna</a></li>
+            <li><a href="#">Strona główna</a></li>
+            <li><a href="#">Strona główna</a></li>
+        </ul>
+    </nav>
+-->
+    
+<div>
+    <h1>Dodaj nową ofertę</h1>
+    <form action = "#" th:action = "@{/admin/save_oferta_internet}" method = "post">
+        <table border = "1" cellpadding = "10">
+            <tr>
+            <td>Typ oferty:</td>
+                <td><select id = "typOferty" th:value = "${ofertaInternet.typOferty}" name = "typOferty" required>
+                    <option value = "Internet">Internet</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+            <td>Typ Internetu:</td>
+                    <td><select id = "typInternetu" th:value = "${ofertaInternet.typInternetu}" name = "typInternetu" required>
+                    <option value = "Radiowy">Radiowy</option>
+                    <option value = "Satelitarny">Satelitarny</option>
+                    <option value = "Kablowy">Kablowy</option>
+                    <option value = "Swiatlowodowy">Swiatlowodowy</option>
+                    <option value = "Inny">Inny</option>
+                    </select>
+                </td>
+            </tr>
+            
+            <tr>
+            <td>Prędkośc pobierania [Mb]:</td>
+                <td><input type = "Number" th:value = "${ofertaInternet.predkoscPobieraniaWMb}" name = "predkoscPobieraniaWMb" required></td>
+            </tr>
+            
+            <tr>
+            <td>Prędkość Wysyłania [Mb]:</td>
+                <td><input type = "Number" th:value = "${ofertaInternet.predkoscWysylaniaWMb}" name = "predkoscWysylaniaWMb" required></td>
+            </tr>
+            
+            <tr>
+            <td>Limit transferu [GB]:</td>
+                <td><input type = "Number" th:value = "${ofertaInternet.limitTransferu}" name = "limitTransferu" required></td>
+            </tr>
+            
+            <tr>
+            <td>Czas trwania:</td>
+                <td><input type = "text" th:value = "${ofertaInternet.czasTrwania}" name = "czasTrwania" required></td>
+            </tr>
+            
+            <tr>
+            <td>Dodatki do umowy:</td>
+                <td><select id = "dodatkiDoUmowy" th:value = "${ofertaInternet.dodatkiDoUmowy}" name = "dodatkiDoUmowy" required>
+                    <option value = "Brak">Brak</option>
+                    <option value = "Bezpieczny Internet">Bezpieczny Internet</option>
+                    <option value = "Telewizja Internetowa">Telewizja Internetowa</option>
+                    <option value = "Inny">Inny</option>
+                    </select>
+                </td>
+            </tr>
+            
+            <tr>
+            <td>Cena:</td>
+                <td><input type = "Number" step = "0.01" th:value = "${ofertaInternet.cena}" name = "cena" required></td>
+            </tr>
+
+            
+            <tr>
+            <td>Koszt wypowiedzenia:</td>
+                <td><input type = "Number" step = "0.01" th:value = "${ofertaInternet.kosztWypowiedzenia}" name = "kosztWypowiedzenia" required></td>
+            </tr>
+
+            <tr>
+                <td colspan = "2">
+                    <button type = "submit">Zapisz</button>
+                </td>
+            </tr>
+        </table>
+        </form>
+
+
+</div>
+</body>
+
+
+</html>

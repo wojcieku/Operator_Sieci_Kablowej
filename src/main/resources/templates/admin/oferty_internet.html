@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang = "pl" xmlns = "http://www.w3.org/1999/xhtml" xmlns:th = "http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="/css/style1.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
+</head>
+<body>
+
+            <div class = "navbar">
+            <ul>
+                <li><a href = "#">Strona główna</a></li>
+                <li><a href = "#">Oferta</a>
+                <div class = "submenu-1">
+                        <ul>
+                            <li><a href = "#">Internet</a></li>
+                            <li><a href = "#">Telewizja</a></li>
+                            <li><a href = "#">Telefonia</a></li>
+                        </ul>
+                    </div>
+                
+                </li>
+                <li><a href = "#">Klienci</a></li>
+                <li><a href = "#">Umowy</a></li>
+                <li><a href = "#">O nas</a></li>
+                <li><a href = "#">Logowanie</a></li>
+            </ul>
+        </div>
+    
+<div>
+    <h1>Oferty</h1>
+
+    <a href = "/new_oferta_internet">Dodaj nową ofertę</a>
+    <table class = "contentTable">
+        <thead>
+            <tr>
+                <th >Numer oferty</th>
+                <th>Typ internetu</th>
+                <th>Prędkośc pobierania [Mb]</th>
+                <th>Prędkośc wysyłania [Mb]</th>
+                <th>Limit transferu [GB]</th>
+                <th>Czas trwania</th>
+                <th>Cena</th>
+                <th>Dodatki do umowy</th>
+                <th>Koszt wypowiedzenia</th>
+                <th>Akcja</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each = "ofertaInternet : ${ofertaInternetList}">
+                <td th:text = "${ofertaInternet.nrOferty}">Numer oferty</td>
+                <td th:text = "${ofertaInternet.typInternetu}">Typ internetu</td>
+                <td th:text = "${ofertaInternet.predkoscPobieraniaWMb}">Prędkośc pobierania [Mb/s]</td>
+                <td th:text = "${ofertaInternet.predkoscWysylaniaWMb}">Prędkośc wysyłania [Mb/s]</td>
+                <td th:text = "${ofertaInternet.limitTransferu}">Limit transferu [GB]</td>
+                <td th:text = "${ofertaInternet.czasTrwania}">Czas trwania</td>
+                <td th:text = "${ofertaInternet.cena}">Cena</td>
+                <td th:text = "${ofertaInternet.dodatkiDoUmowy}">Dodatki do umowy</td>
+                <td th:text = "${ofertaInternet.kosztWypowiedzenia}">Koszt wypowiedzenia</td>
+                <td>
+                    <a th:href = "@{'/edit_oferta_internet/' + ${ofertaInternet.nrOferty}}"><button type = "button" id = "editButton" class = "buttonx">
+                        <span class = "buttonText">Edytuj</span>
+                        <span class = "buttonIcon">
+                            <ion-icon name="create-outline"></ion-icon>
+                        </span>
+                        </button></a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a th:href = "@{'/delete_oferta_internet/' + ${ofertaInternet.nrOferty}}"><button type = "button" id = "deleteButton" class = "buttonx">
+                        <span class = "buttonText">Usuń</span>
+                        <span class = "buttonIcon">
+                            <ion-icon name="trash-outline"></ion-icon>
+                        </span>
+                        </button></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+
+</html>

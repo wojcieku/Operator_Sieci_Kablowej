@@ -1,4 +1,4 @@
-package bdbt_proj;
+package projekt_bdbt;
 
 public class Operator {
     private String nrOperatora;

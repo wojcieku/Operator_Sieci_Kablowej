@@ -1,4 +1,4 @@
-package bdbt_proj;
+package projekt_bdbt;
 
 import java.util.List;
 

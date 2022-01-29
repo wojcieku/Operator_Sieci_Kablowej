@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang = "pl" xmlns = "http://www.w3.org/1999/xhtml" xmlns:th = "http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="style1.css">
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+</head>
+<body>
+    <!--
+    <nav>
+        <ul>
+            <li><a href="#">Strona główna</a></li>
+            <li><a href="#">Strona główna</a></li>
+            <li><a href="#">Strona główna</a></li>
+            <li><a href="#">Strona główna</a></li>
+            <li><a href="#">Strona główna</a></li>
+        </ul>
+    </nav>
+-->
+    
+<div>
+    <h1>Oferty</h1>
+
+    <a href = "/new_oferta_telefonia">Dodaj nową ofertę</a>
+    <table border="1" cellpadding = "10">
+        <thead>
+            <tr>
+                <th>Numer oferty</th>
+                <th>Pakiet danych [GB]</th>
+                <th>Pakiet połączeń krajowych [minuty]</th>
+                <th>Pakiet połączeń zagranicznych [minuty]</th>
+                <th>Pakiet SMS</th>
+                <th>Koszt wiadomości po przekroczeniu pakietu</th>
+                <th>Koszt połączeń krajowych po przekroczeniu pakietu[za minutę]</th>
+                <th>Koszt połączeń zagranicznych po przekroczeniu pakietu[za minutę]</th>
+                <th>Nazwa generacji</th>
+                <th>Opis generacji</th>
+                <th>Czas trwania</th>
+                <th>Cena</th>
+                <th>Dodatki do umowy</th>
+                <th>Koszt wypowiedzenia</th>
+                <th>Akcja</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each = "ofertaTelefonia : ${ofertaTelefoniaList}">
+                <td th:text = "${ofertaTelefonia.nrOferty}">Numer oferty</td>
+                <td th:text = "${ofertaTelefonia.pakietDanych}">Pakiet danych [GB]</td>
+                <td th:text = "${ofertaTelefonia.pakietPolaczenKrajowych}">Pakiet połączeń krajowych [minuty]</td>
+                <td th:text = "${ofertaTelefonia.pakietPolaczenZagranica}">Pakiet połączeń zagranicznych [minuty]</td>
+                <td th:text = "${ofertaTelefonia.pakietWiadomosci}">Pakiet SMS</td>
+                <td th:text = "${ofertaTelefonia.kosztWiadomosci}">Koszt wiadomości po przekroczeniu pakietu</td>
+                <td th:text = "${ofertaTelefonia.polaczeniaKrajoweKoszt}">Koszt połączeń krajowych po przekroczeniu pakietu[za minutę]</td>
+                <td th:text = "${ofertaTelefonia.polaczeniaZagranicaKoszt}">Koszt połączeń zagranicznych po przekroczeniu pakietu[za minutę]</td>
+                <td th:text = "${ofertaTelefonia.nazwaGeneracji}">Nazwa generacji</td>
+                <td th:text = "${ofertaTelefonia.opis}">Opis generacji</td>
+                <td th:text = "${ofertaTelefonia.czasTrwania}">Czas trwania</td>
+                <td th:text = "${ofertaTelefonia.cena}">Cena</td>
+                <td th:text = "${ofertaTelefonia.dodatkiDoUmowy}">Dodatki do umowy</td>
+                <td th:text = "${ofertaTelefonia.kosztWypowiedzenia}">Koszt wypowiedzenia</td>
+                <td>
+                    <a th:href = "@{'/edit_oferta_telefonia/' + ${ofertaTelefonia.nrOferty}}">Edytuj</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a th:href = "@{'/delete_oferta_telefonia/' + ${ofertaTelefonia.nrOferty}}">Usuń</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+
+
+</html>

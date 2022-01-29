@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang = "pl" xmlns = "http://www.w3.org/1999/xhtml" xmlns:th = "http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="style1.css">
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+</head>
+<body>
+    <!--
+    <nav>
+        <ul>
+            <li><a href="#">Strona główna</a></li>
+            <li><a href="#">Strona główna</a></li>
+            <li><a href="#">Strona główna</a></li>
+            <li><a href="#">Strona główna</a></li>
+            <li><a href="#">Strona główna</a></li>
+        </ul>
+    </nav>
+-->
+    
+<div>
+    <h1>Klienci</h1>
+
+    <a href = "/new_klient">Dodaj klienta</a>
+    <table border="1" cellpadding = "10">
+        <thead>
+            <tr>
+                <th>Numer klienta</th>
+                <th>Imię</th>
+                <th>Nazwisko</th>
+                <th>Numer telefonu</th>
+                <th>Data dołączenia</th>
+                <th>Aktywna umowa</th>
+                <th>Numer dowodu</th>
+                <th>Numer PESEL</th>
+                <th>Numer paszportu</th>
+                <th>Numer operatora</th>
+                <th>Numer adresu</th>
+                <th>Adres e-mail</th>
+                <th>Hasło</th>
+                <th>Rola</th>
+                <th>Konto aktywne</th>
+                <th>Akcja</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each = "klient : ${klienciList}">
+                <td th:text = "${klient.nrKlienta}">Numer adresu</td>
+                <td th:text = "${klient.imie}">Imię</td>
+                <td th:text = "${klient.nazwisko}">Nazwisko</td>
+                <td th:text = "${klient.nrTelefonu}">Numer telefonu</td>
+                <td th:text = "${klient.dataDolaczenia}">Data dołączenia</td>
+                <td th:text = "${klient.aktywnaUmowa}">Aktywna umowa</td>
+                <td th:text = "${klient.nrDowodu}">Numer dowodu</td>
+                <td th:text = "${klient.pesel}">Numer PESEL</td>
+                <td th:text = "${klient.nrPaszportu}">Numer paszportu</td>
+                <td th:text = "${klient.nrOperatora}">Numer operatora</td>
+                <td th:text = "${klient.nrAdresu}">Numer adresu</td>
+                <td th:text = "${klient.email}">Adres e-mail</td>
+                <td th:text = "${klient.haslo}">Hasło</td>
+                <td th:text = "${klient.authority}">Rola</td>
+                <td th:text = "${klient.czyAktywne}">Konto aktywne</td>
+                <td>
+                    <a th:href = "@{'/admin/edit_klient/' + ${klient.nrKlienta}}">Edytuj</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a th:href = "@{'/admin/delete_klient/' + ${klient.nrKlienta}}">Usuń</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+
+
+</html>

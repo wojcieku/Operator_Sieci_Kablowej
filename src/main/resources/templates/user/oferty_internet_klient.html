@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang = "pl" xmlns = "http://www.w3.org/1999/xhtml" xmlns:th = "http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style1.css">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+</head>
+<body>
+<!--
+<nav>
+    <ul>
+        <li><a href="#">Strona główna</a></li>
+        <li><a href="#">Strona główna</a></li>
+        <li><a href="#">Strona główna</a></li>
+        <li><a href="#">Strona główna</a></li>
+        <li><a href="#">Strona główna</a></li>
+    </ul>
+</nav>
+-->
+
+<div>
+    <h1>Oferty</h1>
+
+    <table border="1" cellpadding = "10">
+        <thead>
+        <tr>
+            <th >Numer oferty</th>
+            <th>Typ internetu</th>
+            <th>Prędkośc pobierania [Mb]</th>
+            <th>Prędkośc wysyłania [Mb]</th>
+            <th>Limit transferu [GB]</th>
+            <th>Czas trwania</th>
+            <th>Cena</th>
+            <th>Dodatki do umowy</th>
+            <th>Koszt wypowiedzenia</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each = "ofertaInternet : ${ofertaInternetList}">
+            <td th:text = "${ofertaInternet.nrOferty}">Numer oferty</td>
+            <td th:text = "${ofertaInternet.typInternetu}">Typ internetu</td>
+            <td th:text = "${ofertaInternet.predkoscPobieraniaWMb}">Prędkośc pobierania [Mb/s]</td>
+            <td th:text = "${ofertaInternet.predkoscWysylaniaWMb}">Prędkośc wysyłania [Mb/s]</td>
+            <td th:text = "${ofertaInternet.limitTransferu}">Limit transferu [GB]</td>
+            <td th:text = "${ofertaInternet.czasTrwania}">Czas trwania</td>
+            <td th:text = "${ofertaInternet.cena}">Cena</td>
+            <td th:text = "${ofertaInternet.dodatkiDoUmowy}">Dodatki do umowy</td>
+            <td th:text = "${ofertaInternet.kosztWypowiedzenia}">Koszt wypowiedzenia</td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+
+
+</html>

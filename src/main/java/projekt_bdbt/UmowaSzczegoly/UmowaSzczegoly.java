@@ -1,4 +1,4 @@
-package bdbt_proj;
+package projekt_bdbt.UmowaSzczegoly;
 
 public class UmowaSzczegoly {
     private String nrOferty;

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang = "pl" xmlns = "http://www.w3.org/1999/xhtml" xmlns:th = "http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="style1.css">
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+</head>
+<body>
+    <!--
+    <nav>
+        <ul>
+            <li><a href="#">Strona główna</a></li>
+            <li><a href="#">Strona główna</a></li>
+            <li><a href="#">Strona główna</a></li>
+            <li><a href="#">Strona główna</a></li>
+            <li><a href="#">Strona główna</a></li>
+        </ul>
+    </nav>
+-->
+    
+<div>
+    <h1>Oferty</h1>
+
+    <a href = "/new_oferta_telewizja">Dodaj nową ofertę</a>
+    <table border="1" cellpadding = "10">
+        <thead>
+            <tr>
+                <th>Numer oferty</th>
+                <th>Liczba kanałów</th>
+                <th>Liczba kanałów w jakośc Full HD</th>
+                <th>Kanały zagraniczne zawarte w ofercie</th>
+                <th>Usługa HBO w ofercie</th>
+                <th>Cienamx w ofercie</th>
+                <th>Kanały dla dzieci w ofercie</th>
+                <th>Czas trwania</th>
+                <th>Cena</th>
+                <th>Dodatki do umowy</th>
+                <th>Koszt wypowiedzenia</th>
+                <th>Akcja</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each = "ofertaTelewizja : ${ofertaTelewizjaList}">
+                <td th:text = "${ofertaTelewizja.nrOferty}">Numer oferty</td>
+                <td th:text = "${ofertaTelewizja.lacznaLiczbaKanalow}">Liczba kanałów</td>
+                <td th:text = "${ofertaTelewizja.liczbaKanalowWysokiejJakosci}">Liczba kanałów w jakośc Full HD</td>
+                <td th:text = "${ofertaTelewizja.czyKanalyZagraniczne}">Kanały zagraniczne zawarte w ofercie</td>
+                <td th:text = "${ofertaTelewizja.czyHomeBoxOffice}">Usługa HBO w ofercie</td>
+                <td th:text = "${ofertaTelewizja.czyCinemax}">Cienamx w ofercie</td>
+                <td th:text = "${ofertaTelewizja.czyDzieci}">Kanały dla dzieci w ofercie</td>
+                <td th:text = "${ofertaTelewizja.czasTrwania}">Czas trwania</td>
+                <td th:text = "${ofertaTelewizja.cena}">Cena</td>
+                <td th:text = "${ofertaTelewizja.dodatkiDoUmowy}">Dodatki do umowy</td>
+                <td th:text = "${ofertaTelewizja.kosztWypowiedzenia}">Koszt wypowiedzenia</td>
+                <td>
+                    <a th:href = "@{'/edit_oferta_telewizja/' + ${ofertaTelewizja.nrOferty}}">Edytuj</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a th:href = "@{'/delete_oferta_telewizja/' + ${ofertaTelewizja.nrOferty}}">Usuń</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+
+
+</html>

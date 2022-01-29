@@ -1,4 +1,4 @@
-package bdbt_proj;
+package projekt_bdbt;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -8,8 +8,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 import javax.sql.DataSource;
@@ -19,7 +19,6 @@ import javax.sql.DataSource;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     private DataSource dataSource; //okreslone w application.properties
-
     @Autowired
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -53,8 +52,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
                 .antMatchers("/", "/index").permitAll()
                 .antMatchers("/resources/**", "/static/**", "/webjars/**").permitAll()
-                .antMatchers("/main").authenticated()
-                .antMatchers("/operatorData", "/main").hasAuthority("ADMIN")
+                .antMatchers("/admin/**", "/user/**").authenticated()
+                .antMatchers("/admin/**", "/main").hasAuthority("ADMIN")
+                .antMatchers("/update_klient").hasAnyAuthority("ADMIN", "USER")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -66,5 +66,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logoutUrl("/index")
                 .logoutSuccessUrl("/index")
                 .permitAll();
+
     }
 }

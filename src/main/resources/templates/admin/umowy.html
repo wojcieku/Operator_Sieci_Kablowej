@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wszystkie umowy</title>
+</head>
+<body>
+<div align="center">
+    <h1>Umowy</h1>
+    <a th:href="@{'/admin/newUmowa'}">Dodaj umowę</a>
+    <table border="1" cellpadding = "10">
+        <thead>
+        <tr>
+            <th>Numer umowy</th>
+            <th>Data podpisania</th>
+            <th>Imie i nazwisko</th>
+            <th>Akcja</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each = "umowa : ${umowaList}">
+                <td th:text="${umowa.nrUmowy}">Numer umowy</td>
+                <td th:text="${umowa.data}">Data podpisania</td>
+                <td th:text="${umowa.imieNazwisko}">Imie i nazwisko</td>
+                <td>
+                    <a th:href="@{'/admin/edit_umowa/'+${umowa.nrUmowy}}">Edytuj</a>
+                    <a th:href ="@{'/admin/delete/'+${umowa.nrUmowy}}">Usuń</a>
+                    <a th:href="@{'/umowa_szczegoly/'+${umowa.nrOferty}}">Szczegóły</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

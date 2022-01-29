@@ -1,4 +1,4 @@
-package bdbt_proj;
+package projekt_bdbt;
 
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
@@ -43,8 +43,8 @@ public class UrlAuthenticationHandler implements AuthenticationSuccessHandler {
     }
     protected String determineTargetUrl(final Authentication authentication){
         Map<String, String> authorityTargetUrlMap = new HashMap<>();
-        authorityTargetUrlMap.put("USER", "/userMain");
-        authorityTargetUrlMap.put("ADMIN", "/main");
+        authorityTargetUrlMap.put("USER", "/user/main");
+        authorityTargetUrlMap.put("ADMIN", "/admin/main");
 
         final Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
 
