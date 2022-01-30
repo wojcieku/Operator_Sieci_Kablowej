@@ -8,6 +8,46 @@ body
     background-color: #ffffff;
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
     font-family: 'Montserrat', sans-serif;
+    height: 100%;
+}
+.container
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.tableTitle
+{
+    padding: 30px;
+    text-align: center;
+}
+.tableContainer
+{
+    left: auto;
+    right: auto;
+    width: 99.9%;
+}
+.header
+{
+    width: 100%;
+}
+.content
+{
+    height: 80%;
+}
+.footer
+{
+    margin-bottom: 0px;
+    width: 100%;
+    text-align: center;
+    background: #22649c;
+    color: #ffffff;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    position: absolute;
+    bottom: 0;
 }
 .navbar
 {
@@ -75,6 +115,7 @@ body
 
 .contentTable
 {
+    width: 100%;
     border-collapse: collapse;
     margin: 25px, 0;
     font-size: 0.9 em;
@@ -176,4 +217,37 @@ body
 {
     font-size: 1.5em;
     background: rgba(0,0,0,0.08);
+}
+.newRecord
+{
+    text-align: center;
+    margin-top: 20px;
+}
+.addButton
+{
+    display: inline-flex;
+    height: 50px;
+    width: 200px;
+    padding: 0;
+    border-radius: 10px;
+    border: none;
+    overflow: hidden;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    background: #22649c;
+    text-decoration: none;
+    outline: none;
+}
+a
+{
+    text-decoration: none;
+}
+.addButton:hover
+{
+    background: #11538b;
+}
+.addButton:active
+{
+    background: #00427a;
 }
