@@ -1,87 +1,125 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang = "pl" xmlns = "http://www.w3.org/1999/xhtml" xmlns:th = "http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Edytuj Ofertę</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="/css/editFormStyle.css">
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 </head>
 <body>
-    <div align = "center">
-        <h1>Edytuj Ofertę</h1>
-        <br>
-        <form action="#" th:action = "@{/update_oferta_telefonia}" method = "post">
-            <table border = "1" cellpadding = "10">
-                <tr>
-                    <td>Numer oferty:</td>
-                    <td><input type = "text" th:value = "${ofertaTelefonia.nrOferty}" name = "nrOferty" readonly = "readonly" ></td>
-                </tr>
-                <tr>
-                    <td>Pakiet Danych [GB]:</td>
-                    <td><input type = "Number" th:value = "${ofertaTelefonia.pakietDanych}" name = "pakietDanych" required></td>
-                </tr>
-                <tr>
-                    <td>Pakiet połączeń krajowych [minuty]:</td>
-                    <td><input type = "Number" th:value = "${ofertaTelefonia.pakietPolaczenKrajowych}" name = "pakietPolaczenKrajowych" required></td>
-                </tr>
+    <div class = "container">
+                <div class = "header">
+                    <div class = "navbar">
+                    <ul>
+                        <li><a href = "/admin/main">Strona główna</a></li>
+                        <li>Oferta
+                        <div class = "submenu-1">
+                                <ul>
+                                    <li><a href = "/admin/oferty_internet">Internet</a></li>
+                                    <li><a href = "/admin/oferty_telewizja">Telewizja</a></li>
+                                    <li><a href = "/admin/oferty_telefonia">Telefonia</a></li>
+                                </ul>
+                            </div>
 
-                <tr>
-                    <td>Pakiet połączeń zagranicznych [minuty]:</td>
-                    <td><input type = "Number" th:value = "${ofertaTelefonia.pakietPolaczenZagranica}" name = "pakietPolaczenZagranica"></td>
-                </tr>
+                        </li>
+                        <li><a href = "/admin/klienci">Klienci</a></li>
+                        <li><a href = "/admin/umowy">Umowy</a></li>
+                        <li><a href = "operatorData">O nas</a></li>
+                        <li>
+                            <b style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b>
+                            <div class = "submenu-1">
+                                <ul>
+                                    <li><a href = "/perform_logout">Wyloguj</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
-                <tr>
-                    <td>Pakiet SMS:</td>
-                    <td><input type = "text" th:value = "${ofertaTelefonia.pakietWiadomosci}" name = "pakietWiadomosci" required></td>
-                </tr>
-                <tr>
-                    <td>Koszt SMS po wyczerpaniu pakietu:</td>
-                    <td><input type = "text" th:value = "${ofertaTelefonia.kosztWiadomosci}" name = "kosztWiadomosci" required></td>
-                </tr>
-                <tr>
-                    <td>Koszt połączeń krajowych po wyczerpaniu pakietu [zł/minuta]:</td>
-                    <td><input type = "text" th:value = "${ofertaTelefonia.polaczeniaKrajoweKoszt}" name = "polaczeniaKrajoweKoszt" required></td>
-                </tr>
-                <tr>
-                    <td>Koszt połączeń zagranicznych po wyczerpaniu pakietu [zł/minuta]:</td>
-                    <td><input type = "text" th:value = "${ofertaTelefonia.polaczeniaZagranicaKoszt}" name = "polaczeniaZagranicaKoszt" required></td>
-                </tr>
-                <tr>
-                    <td>Nazwa Generacji:</td>
-                    <td><input type = "text" th:value = "${ofertaTelefonia.nazwaGeneracji}" name = "nazwaGeneracji" required></td>
-                </tr>
-                <tr>
-                    <td>Opis Generacji:</td>
-                    <td><input type = "text" th:value = "${ofertaTelefonia.opis}" name = "opis" required></td>
-                </tr>
-                <tr>
-                    <td>Czas trwania:</td>
-                    <td><input type = "text" th:value = "${ofertaTelefonia.czasTrwania}" name = "czasTrwania" required></td>
-                </tr>
-                <tr>
-                    <td>Cena:</td>
-                    <td><input type = "Number" step = "0.01" th:value = "${ofertaTelefonia.cena}" name = "cena" required></td>
-                </tr>
-                <tr>
-                <td>Dodatki do umowy:</td>
-                    <td><select id = "dodatkiDoUmowy" th:value = "${ofertaTelefonia.dodatkiDoUmowy}" name = "dodatkiDoUmowy" required>
-                        <option value = "Bezpieczny Internet">Bezpieczny Internet</option>
-                        <option value = "Telewizja Internetowa">Telewizja Internetowa</option>
-                        <option value = "Inny">Inny</option>
-                        </select>
-                    </td>
-                </tr>
+        
+    <div class = "mainContent">
+        <div class = "content">
+        <div class = "title">Edycja oferty</div>
+        <div class = "newForm">
+            <form action = "#" th:action = "@{/admin/update_oferta_telefonia}" method = "post">
+                <div class = "selectDetails">
 
-                <tr>
-                    <td>Koszt wypowiedzenia:</td>
-                    <td><input type = "Number" step = "0.01" th:value = "${ofertaTelefonia.kosztWypowiedzenia}" name = "kosztWypowiedzenia" required></td>
-                </tr>
-                <tr>
-                    <td colspan = "2"><button type = "submit">Zapisz</button>
-                    </td>
-                </tr>
-            </table>
-
-        </form>
-
+                        <div class = "inputSelect">
+                            <span class = "selectTitle">Dodatki do umowy</span>
+                            <select id = "dodatkiDoUmowy" th:value = "${ofertaTelefonia.dodatkiDoUmowy}" name = "dodatkiDoUmowy" required>
+                            <option value = "Brak">Brak</option>
+                            <option value = "Bezpieczny Internet">Bezpieczny Internet</option>
+                            <option value = "Telewizja Internetowa">Telewizja Internetowa</option>
+                            <option value = "Inny">Inny</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class = "userDetails">
+                    <div class = "inputBox">
+                        <span class = "details">Numer oferty</span>
+                        <input type = "Number" th:value = "${ofertaTelefonia.nrOferty}" name = "nrOferty" readonly = "readonly" required>
+                    </div>
+                    <div class = "inputBox">
+                        <span class = "details">Pakiet danych</span>
+                        <input type = "Number" th:value = "${ofertaTelefonia.pakietDanych}" name = "pakietDanych" placeholder = "Podaj pakiet danych w GB, np. 50" required>
+                    </div>
+                    <div class = "inputBox">
+                        <span class = "details">Pakiet połączeń krajowych</span>
+                        <input type = "Number" th:value = "${ofertaTelefonia.pakietPolaczenKrajowych}" name = "pakietPolaczenKrajowych" placeholder = "Podaj wielkość pakietu w minutach, np. 50" required>
+                    </div>
+                    <div class = "inputBox">
+                        <span class = "details">Pakiet połączeń zagranicznych</span>
+                        <input type = "Number" th:value = "${ofertaTelefonia.pakietPolaczenZagranica}" name = "pakietPolaczenZagranica" placeholder = "Podaj wielkość pakietu w minutach, np. 50" required>
+                    </div>
+                    <div class = "inputBox">
+                        <span class = "details">Pakiet SMS</span>
+                        <input type = "Number" th:value = "${ofertaTelefonia.pakietWiadomosci}" name = "pakietWiadomosci" placeholder = "Podaj ilośc darmowych SMSów" required>
+                    </div>
+                    <div class = "inputBox">
+                        <span class = "details">Koszt SMS</span>
+                        <input type = "Number" step = "0.01" th:value = "${ofertaTelefonia.kosztWiadomosci}" name = "kosztWiadomosci" placeholder = "Podaj koszt SMS w zł, np. 0.50" required>
+                    </div>
+                    <div class = "inputBox">
+                        <span class = "details">Koszt połączeń krajowych</span>
+                        <input type = "Number" step = "0.01" th:value = "${ofertaTelefonia.polaczeniaKrajoweKoszt}" name = "polaczeniaKrajoweKoszt" placeholder = "Podaj koszt minuty połączenia w zł, np. 0.20 zł" required>
+                    </div>
+                    <div class = "inputBox">
+                        <span class = "details">Koszt połączeń zagranicznych</span>
+                        <input type = "Number" step = "0.01" th:value = "${ofertaTelefonia.polaczeniaZagranicaKoszt}" name = "polaczeniaZagranicaKoszt" placeholder = "Podaj koszt minuty połączenia w zł, np. 1.20 zł" required>
+                    </div>
+                    <div class = "inputBox">
+                        <span class = "details">Nazwa generacji</span>
+                        <input type = "text" th:value = "${ofertaTelefonia.nazwaGeneracji}" name = "nazwaGeneracji" placeholder = "Podaj nazwę generacji telefonii" required>
+                    </div>
+                    <div class = "inputBox">
+                        <span class = "details">Opis generacji</span>
+                        <input type = "text" th:value = "${ofertaTelefonia.opis}" name = "opis" placeholder = "Opisz generację telefonii">
+                    </div>
+                    <div class = "inputBox">
+                        <span class = "details">Czas trwania</span>
+                        <input type = "text" th:value = "${ofertaTelefonia.czasTrwania}" name = "czasTrwania" placeholder = "Podaj czas trwania, np. 12 miesięcy" required>
+                    </div>
+                    <div class = "inputBox">
+                        <span class = "details">Cena</span>
+                        <input type = "Number" step = "0.01" th:value = "${ofertaTelefonia.cena}" name = "cena" placeholder = "Podaj cenę w zł, np. 49.99" required>
+                    </div>
+                    <div class = "inputBox">
+                        <span class = "details">Koszt wypowiedzenia</span>
+                        <input type = "Number" step = "0.01" th:value = "${ofertaTelefonia.kosztWypowiedzenia}" name = "kosztWypowiedzenia" placeholder = "Podaj koszt wypowiedzenia w zł, np. 499.99" required>
+                    </div>
+                </div>
+                <div class = "confirmButton">
+                <input type = "submit" value = "Uaktualnij ofertę ">
+                </div>
+            </form>
+        </div>
+        </div>
     </div>
+        <div class = "footer">
+            BDBT 2022, Operator sieci kablowej - Radosław Godlewski, Jakub Wojciechowski 
+        </div>
+</div>      
 </body>
+
+
 </html>

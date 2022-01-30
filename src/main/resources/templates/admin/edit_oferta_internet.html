@@ -1,75 +1,109 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang = "pl" xmlns = "http://www.w3.org/1999/xhtml" xmlns:th = "http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Edytuj Ofertę</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="/css/editFormStyle.css">
 </head>
 <body>
-    <div align = "center">
-        <h1>Edytuj Ofertę</h1>
-        <br>
-        <form action="#" th:action = "@{/admin/update_oferta_internet}" method = "post">
-            <table border = "1" cellpadding = "10">
-                <tr>
-                    <td>Numer oferty:</td>
-                    <td><input type = "text" th:value = "${ofertaInternet.nrOferty}" name = "nrOferty" readonly = "readonly" ></td>
-                </tr>
-            <tr>
-            <td>Typ Internetu:</td>
-                    <td><select id = "typInternetu" th:value = "${ofertaInternet.typInternetu}" name = "typInternetu" required>
-                    <option value = "Radiowy">Radiowy</option>
-                    <option value = "Satelitarny">Satelitarny</option>
-                    <option value = "Kablowy">Kablowy</option>
-                    <option value = "Swiatlowodowy">Swiatlowodowy</option>
-                    <option value = "Inny">Inny</option>
-                    </select>
-                </td>
-            </tr>
-                <tr>
-                    <td>Prędkośc pobierania [Mb/s]:</td>
-                    <td><input type = "Number" th:value = "${ofertaInternet.predkoscPobieraniaWMb}" name = "predkoscPobieraniaWMb" required></td>
-                </tr>
-                <tr>
-                    <td>Prędkośc wysyłania [Mb/s]:</td>
-                    <td><input type = "Number" th:value = "${ofertaInternet.predkoscWysylaniaWMb}" name = "predkoscWysylaniaWMb" required></td>
-                </tr>
+    <div class = "container">
+                <div class = "header">
+                    <div class = "navbar">
+                    <ul>
+                        <li><a href = "/admin/main">Strona główna</a></li>
+                        <li>Oferta
+                        <div class = "submenu-1">
+                                <ul>
+                                    <li><a href = "/admin/oferty_internet">Internet</a></li>
+                                    <li><a href = "/admin/oferty_telewizja">Telewizja</a></li>
+                                    <li><a href = "/admin/oferty_telefonia">Telefonia</a></li>
+                                </ul>
+                            </div>
 
-                <tr>
-                    <td>Limit transferu [GB]:</td>
-                    <td><input type = "Number" th:value = "${ofertaInternet.limitTransferu}" name = "limitTransferu"></td>
-                </tr>
+                        </li>
+                        <li><a href = "/admin/klienci">Klienci</a></li>
+                        <li><a href = "/admin/umowy">Umowy</a></li>
+                        <li><a href = "operatorData">O nas</a></li>
+                        <li>
+                            <b style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b>
+                            <div class = "submenu-1">
+                                <ul>
+                                    <li><a href = "/perform_logout">Wyloguj</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
-                <tr>
-                    <td>Czas trwania:</td>
-                    <td><input type = "text" th:value = "${ofertaInternet.czasTrwania}" name = "czasTrwania" required></td>
-                </tr>
-
-                <tr>
-                    <td>Cena:</td>
-                    <td><input type = "Number" step = "0.01" th:value = "${ofertaInternet.cena}" name = "cena" required></td>
-                </tr>
-                <tr>
-                <td>Dodatki do umowy:</td>
-                    <td><select id = "dodatkiDoUmowy" th:value = "${ofertaInternet.dodatkiDoUmowy}" name = "dodatkiDoUmowy" required>
-                        <option value = "Bezpieczny Internet">Bezpieczny Internet</option>
-                        <option value = "Telewizja Internetowa">Telewizja Internetowa</option>
-                        <option value = "Inny">Inny</option>
-                        </select>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>Koszt wypowiedzenia:</td>
-                    <td><input type = "Number" step = "0.01" th:value = "${ofertaInternet.kosztWypowiedzenia}" name = "kosztWypowiedzenia" required></td>
-                </tr>
-                <tr>
-                    <td colspan = "2"><button type = "submit">Zapisz</button>
-                    </td>
-                </tr>
-            </table>
-
-        </form>
-
+        
+    <div class = "mainContent">
+        <div class = "content">
+        <div class = "title">Edytuj ofertę</div>
+        <div class = "newForm">
+            <form action = "#" th:action = "@{/admin/update_oferta_internet}" method = "post">
+                <div class = "selectDetails">
+                        <div class = "inputSelect">
+                            <span class = "selectTitle">Typ Internetu</span>
+                            <select id = "typInternetu" th:value = "${ofertaInternet.typInternetu}" name = "typInternetu" required>
+                            <option value = "Radiowy">Radiowy</option>
+                            <option value = "Satelitarny">Satelitarny</option>
+                            <option value = "Kablowy">Kablowy</option>
+                            <option value = "Swiatlowodowy">Światłowodowy</option>
+                            <option value = "Inny">Inny</option>
+                            </select>
+                        </div>
+                        <div class = "inputSelect">
+                            <span class = "selectTitle">Dodatki do umowy</span>
+                            <select id = "dodatkiDoUmowy" th:value = "${ofertaInternet.dodatkiDoUmowy}" name = "dodatkiDoUmowy" required>
+                            <option value = "Brak">Brak</option>
+                            <option value = "Bezpieczny Internet">Bezpieczny Internet</option>
+                            <option value = "Telewizja Internetowa">Telewizja Internetowa</option>
+                            <option value = "Inny">Inny</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class = "userDetails">
+                    <div class = "inputBox">
+                        <span class = "details">Numer oferty</span>
+                        <input type = "Number" th:value = "${ofertaInternet.nrOferty}" name = "nrOferty" readonly = "readonly" required>
+                    </div>
+                    <div class = "inputBox">
+                        <span class = "details">Prędkośc pobierania</span>
+                        <input type = "Number" th:value = "${ofertaInternet.predkoscPobieraniaWMb}" name = "predkoscPobieraniaWMb" placeholder = "Podaj prędkość pobierania w Mb, np. 50" required>
+                    </div>
+                    <div class = "inputBox">
+                        <span class = "details">Prędkośc wysyłania</span>
+                        <input type = "Number" th:value = "${ofertaInternet.predkoscWysylaniaWMb}" name = "predkoscWysylaniaWMb" placeholder = "Podaj prędkość wysyłania w Mb, np. 50" required>
+                    </div>
+                    <div class = "inputBox">
+                        <span class = "details">Limit transferu</span>
+                        <input type = "Number" th:value = "${ofertaInternet.limitTransferu}" name = "limitTransferu" placeholder = "Podaj limit transferu w GB, np. 500GB" required>
+                    </div>
+                    <div class = "inputBox">
+                        <span class = "details">Czas trwania</span>
+                        <input type = "text" th:value = "${ofertaInternet.czasTrwania}" name = "czasTrwania" placeholder = "Podaj czas trwania, np. 12 miesięcy" required>
+                    </div>
+                    <div class = "inputBox">
+                        <span class = "details">Cena</span>
+                        <input type = "Number" step = "0.01" th:value = "${ofertaInternet.cena}" name = "cena" placeholder = "Podaj cenę w zł, np. 49.99" required>
+                    </div>
+                    <div class = "inputBox">
+                        <span class = "details">Koszt wypowiedzenia</span>
+                        <input type = "Number" step = "0.01" th:value = "${ofertaInternet.kosztWypowiedzenia}" name = "kosztWypowiedzenia" placeholder = "Podaj kwotę w zł, np. 499.99 zł" required>
+                    </div>
+                </div>
+                <div class = "confirmButton">
+                <input type = "submit" value = "Uaktualnij ofertę ">
+                </div>
+            </form>
+        </div>
+        </div>
     </div>
+        <div class = "footer">
+            BDBT 2022, Operator sieci kablowej - Radosław Godlewski, Jakub Wojciechowski 
+        </div>
+</div>      
 </body>
+
+
 </html>

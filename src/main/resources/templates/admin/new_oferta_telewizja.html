@@ -2,116 +2,124 @@
 <html lang = "pl" xmlns = "http://www.w3.org/1999/xhtml" xmlns:th = "http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" type="text/css" href="style1.css">
-<!--<meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+<link rel="stylesheet" type="text/css" href="/css/newFormStyle.css">
 </head>
 <body>
-    <!--
-    <nav>
-        <ul>
-            <li><a href="#">Strona główna</a></li>
-            <li><a href="#">Strona główna</a></li>
-            <li><a href="#">Strona główna</a></li>
-            <li><a href="#">Strona główna</a></li>
-            <li><a href="#">Strona główna</a></li>
-        </ul>
-    </nav>
--->
-    
-<div>
-    <h1>Dodaj nową ofertę</h1>
-    <form action = "#" th:action = "@{/save_oferta_telewizja}" method = "post">
-        <table border = "1" cellpadding = "10">
-            <tr>
-            <td>Typ oferty:</td>
-                <td><select id = "typOferty" th:value = "${ofertaTelewizja.typOferty}" name = "typOferty" required>
-                    <option value = "Telewizja">Telewizja</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-            <td>Liczba kanałów:</td>
-                <td><input type = "Number" th:value = "${ofertaTelewizja.lacznaLiczbaKanalow}" name = "lacznaLiczbaKanalow" required></td>
-            </tr>
-            
-            <tr>
-            <td>Liczba kanałów w jakośc Full HD:</td>
-                <td><input type = "Number" th:value = "${ofertaTelewizja.liczbaKanalowWysokiejJakosci}" name = "liczbaKanalowWysokiejJakosci" required></td>
-            </tr>
-            
-            <tr>
-            <td>Kanały zagraniczne zawarte w ofercie:</td>
-                    <td><select id = "czyKanalyZagraniczne" th:value = "${ofertaTelewizja.czyKanalyZagraniczne}" name = "czyKanalyZagraniczne" required>
-                    <option value = "N">Nie</option>
-                    <option value = "T">Tak</option>
-                    </select>
-                </td>
-            </tr>
-            
-            <tr>
-            <td>HBO zawarty w ofercie:</td>
-                    <td><select id = "czyHomeBoxOffice" th:value = "${ofertaTelewizja.czyHomeBoxOffice}" name = "czyHomeBoxOffice" required>
-                    <option value = "N">Nie</option>
-                    <option value = "T">Tak</option>
-                    </select>
-                </td>
-            </tr>
-            
-            <tr>
-            <td>Cinemax zawarty w ofercie:</td>
-                    <td><select id = "czyCinemax" th:value = "${ofertaTelewizja.czyCinemax}" name = "czyCinemax" required>
-                    <option value = "N">Nie</option>
-                    <option value = "T">Tak</option>
-                    </select>
-                </td>
-            </tr>
-            
-                        <tr>
-            <td>Kanały dla dzieci zawarte w ofercie:</td>
-                    <td><select id = "czyDzieci" th:value = "${ofertaTelewizja.czyDzieci}" name = "czyDzieci" required>
-                        <option value = "N">Nie</option>
-                        <option value = "T">Tak</option>
-                    </select>
-                </td>
-            </tr>
-            
-            <tr>
-            <td>Czas trwania:</td>
-                <td><input type = "text" th:value = "${ofertaTelewizja.czasTrwania}" name = "czasTrwania" required></td>
-            </tr>
-            
-            <tr>
-            <td>Dodatki do umowy:</td>
-                <td><select id = "dodatkiDoUmowy" th:value = "${ofertaTelewizja.dodatkiDoUmowy}" name = "dodatkiDoUmowy" required>
-                    <option value = "Brak">Brak</option>
-                    <option value = "Bezpieczny Internet">Bezpieczny Internet</option>
-                    <option value = "Telewizja Internetowa">Telewizja Internetowa</option>
-                    <option value = "Inny">Inny</option>
-                    </select>
-                </td>
-            </tr>
-            
-            <tr>
-            <td>Cena:</td>
-                <td><input type = "Number" step = "0.01" th:value = "${ofertaTelewizja.cena}" name = "cena" required></td>
-            </tr>
+    <div class = "container">
+                <div class = "header">
+                    <div class = "navbar">
+                    <ul>
+                        <li><a href = "/admin/main">Strona główna</a></li>
+                        <li>Oferta
+                        <div class = "submenu-1">
+                                <ul>
+                                    <li><a href = "/admin/oferty_internet">Internet</a></li>
+                                    <li><a href = "/admin/oferty_telewizja">Telewizja</a></li>
+                                    <li><a href = "/admin/oferty_telefonia">Telefonia</a></li>
+                                </ul>
+                            </div>
 
-            
-            <tr>
-            <td>Koszt wypowiedzenia:</td>
-                <td><input type = "Number" step = "0.01" th:value = "${ofertaTelewizja.kosztWypowiedzenia}" name = "kosztWypowiedzenia" required></td>
-            </tr>
+                        </li>
+                        <li><a href = "/admin/klienci">Klienci</a></li>
+                        <li><a href = "/admin/umowy">Umowy</a></li>
+                        <li><a href = "operatorData">O nas</a></li>
+                        <li>
+                            <b style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b>
+                            <div class = "submenu-1">
+                                <ul>
+                                    <li><a href = "/perform_logout">Wyloguj</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
-            <tr>
-                <td colspan = "2">
-                    <button type = "submit">Zapisz</button>
-                </td>
-            </tr>
-        </table>
-        </form>
-
-
-</div>
+        
+    <div class = "mainContent">
+        <div class = "content">
+        <div class = "title">Nowa oferta</div>
+        <div class = "newForm">
+            <form action = "#" th:action = "@{/admin/save_oferta_telewizja}" method = "post">
+                <div class = "selectDetails">
+                        <div class = "inputSelect">
+                            <span class = "selectTitle">Typ oferty</span>
+                            <select id = "typOferty" th:value = "${ofertaTelewizja.typOferty}" name = "typOferty" required>
+                            <option value = "Telefonia">Telefonia</option>
+                            </select>
+                        </div>
+                        <div class = "inputSelect">
+                            <span class = "selectTitle">Dodatki do umowy</span>
+                            <select id = "dodatkiDoUmowy" th:value = "${ofertaTelewizja.dodatkiDoUmowy}" name = "dodatkiDoUmowy" required>
+                            <option value = "Brak">Brak</option>
+                            <option value = "Bezpieczny Internet">Bezpieczny Internet</option>
+                            <option value = "Telewizja Internetowa">Telewizja Internetowa</option>
+                            <option value = "Inny">Inny</option>
+                            </select>
+                        </div>
+                        <div class = "inputSelect">
+                            <span class = "selectTitle">Kanały zagraniczne</span>
+                            <select id = "typOferty" th:value = "${ofertaTelewizja.czyKanalyZagraniczne}" name = "czyKanalyZagraniczne" required>
+                            <option value = "N">Nie</option>
+                            <option value = "T">Tak</option>
+                            </select>
+                        </div>
+                        <div class = "inputSelect">
+                            <span class = "selectTitle">HBO</span>
+                            <select id = "typOferty" th:value = "${ofertaTelewizja.czyHomeBoxOffice}" name = "czyHomeBoxOffice" required>
+                            <option value = "N">Nie</option>
+                            <option value = "T">Tak</option>
+                            </select>
+                        </div>
+                        <div class = "inputSelect">
+                            <span class = "selectTitle">Cinemax</span>
+                            <select id = "typOferty" th:value = "${ofertaTelewizja.czyCinemax}" name = "czyCinemax" required>
+                            <option value = "N">Nie</option>
+                            <option value = "T">Tak</option>
+                            </select>
+                        </div>
+                        <div class = "inputSelect">
+                            <span class = "selectTitle">Kanały dla dzieci</span>
+                            <select id = "typOferty" th:value = "${ofertaTelewizja.czyDzieci}" name = "czyDzieci" required>
+                            <option value = "N">Nie</option>
+                            <option value = "T">Tak</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class = "userDetails">
+                    <div class = "inputBox">
+                        <span class = "details">Liczba kanałów</span>
+                        <input type = "Number" th:value = "${ofertaTelewizja.lacznaLiczbaKanalow}" name = "lacznaLiczbaKanalow" placeholder = "Podaj liczbę konałów" required>
+                    </div>
+                    <div class = "inputBox">
+                        <span class = "details">Liczba kanałów Full HD</span>
+                        <input type = "Number" th:value = "${ofertaTelewizja.liczbaKanalowWysokiejJakosci}" name = "liczbaKanalowWysokiejJakosci" placeholder = "Podaj liczbę konałów Full HD" required>
+                    </div>
+                    <div class = "inputBox">
+                        <span class = "details">Czas trwania</span>
+                        <input type = "text" th:value = "${ofertaTelewizja.czasTrwania}" name = "czasTrwania" placeholder = "Podaj czas trwania, np. 12 miesięcy" required>
+                    </div>
+                    <div class = "inputBox">
+                        <span class = "details">Cena</span>
+                        <input type = "Number" step = "0.01" th:value = "${ofertaTelewizja.cena}" name = "cena" placeholder = "Podaj cenę w zł, np. 49.99" required>
+                    </div>
+                    <div class = "inputBox">
+                        <span class = "details">Koszt wypowiedzenia</span>
+                        <input type = "Number" step = "0.01" th:value = "${ofertaTelewizja.kosztWypowiedzenia}" name = "kosztWypowiedzenia" placeholder = "Podaj koszt wypowiedzenia w zł, np. 499.99" required>
+                    </div>
+                        
+                </div>
+                <div class = "confirmButton">
+                <input type = "submit" value = "Dodaj ofertę ">
+                </div>
+            </form>
+        </div>
+        </div>
+    </div>
+        <div class = "footer">
+            BDBT 2022, Operator sieci kablowej - Radosław Godlewski, Jakub Wojciechowski 
+        </div>
+</div>      
 </body>
 
 

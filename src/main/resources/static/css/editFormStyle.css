@@ -1,0 +1,227 @@
+*
+{
+    padding: 0;
+    margin: 0;
+}
+body
+{
+    display: flex;
+    background-color: #ffffff;
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+    font-family: 'Montserrat', sans-serif;
+    height: 100%;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.container
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.mainContent
+{
+    box-sizing: border-box;
+    justify-content: center;
+    height: 80%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.content
+{
+    padding: 25px 30px;
+    max-width: 800px;
+    height: 100%;
+    width: 100%;
+    background: #edeff7;
+    border-radius: 5px;
+    overflow-y: scroll;
+    max-height: 500px;
+}
+.content .title
+{
+    font-size: 25px;
+    font-weight: 500;
+    position: relative;
+}
+.inputSelect
+{
+    padding-top: 20px;
+}
+.inputSelect select
+{
+    width: 100px;
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+.content .title:before
+{
+    content: '';
+    position: absolute;
+    height: 3px;
+    width: 140px;
+    background: #22649c;
+    left: 0;
+    bottom: 0;
+}
+.content form .userDetails
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.content form .selectDetails
+{
+    padding-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-bottom: 70px;
+}
+form .userDetails .inputBox
+{
+    margin-bottom: 15px;
+    width: calc(100% /2 - 20px);
+}
+.userDetails .inputBox input
+{
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+.userDetails .inputBox input:focus, .userDetails .inputBox input:valid
+{
+    border-color: #22649c;
+}
+form .selectDetails .selectTitle
+{
+    font-size: 20px;
+    font-weight: 500;
+}
+form .confirmButton
+{
+    height: 45px;
+    margin: 45px 0;
+}
+form .confirmButton input
+{
+    height: 100%;
+    width: 100%;
+    outline: none;
+    color: #ffffff;
+    background: #22649c;
+    border: none;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    border-radius: 5px;
+}
+form .confirmButton input:hover
+{
+    background: #11538b;
+}
+.userDetails .inputBox .details
+{
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+.header
+{
+    width: 100%;
+}
+.navbar
+{
+    background: #22649c;
+    text-align: center;
+    
+}
+.navbar ul
+{
+    display: inline-flex;
+    list-style: none;
+    color: #ffffff;
+}
+.navbar ul li
+{
+    width: 120px;
+    margin: 15px;
+    padding: 15px;
+}
+.navbar ul li a
+{
+    text-decoration: none;
+    color: #ffffff;
+}
+.navbar ul li:hover
+{
+    background: #11538b;
+    border-radius: 3px;
+}
+.submenu-1
+{
+    display: none;
+}
+.navbar ul li:hover .submenu-1
+{
+    display: block;
+    position: absolute;
+    background: #22649c;
+    margin-top: 15px;
+    margin-left: 15px;
+    z-index: 10;
+}
+.navbar ul li:hover .submenu-1 ul
+{
+    display: block;
+    margin: 10px;
+}
+.navbar ul li:hover .submenu-1 ul li
+{
+    width: 150px;
+    padding: 10px;
+    border-bottom: 1px dotted #ffffff;
+    background: transparent;
+    border-radius: 0;
+    text-align: left;
+}
+.navbar ul li:hover .submenu-1 ul li:last-child
+{
+    border-bottom: none;
+}
+.navbar ul li:hover .submenu-1 ul li a:hover
+{
+    color: #eeeeee;
+}
+
+
+
+
+.footer
+{
+    margin-bottom: 0px;
+    width: 100%;
+    text-align: center;
+    background: #22649c;
+    color: #ffffff;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    position: absolute;
+    bottom: 0;
+}

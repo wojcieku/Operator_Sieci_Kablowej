@@ -2,39 +2,43 @@
 <html lang = "pl" xmlns = "http://www.w3.org/1999/xhtml" xmlns:th = "http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" type="text/css" href="/css/style1.css">
+<link rel="stylesheet" type="text/css" href="/css/tableStyle.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
 </head>
 <body>
 <div class = "container">
-        <div class = "header">
-                <div class = "navbar">
-                <ul>
-                    <li><a href = "#">Strona główna</a></li>
-                    <li><a href = "#">Oferta</a>
-                    <div class = "submenu-1">
-                            <ul>
-                                <li><a href = "#">Internet</a></li>
-                                <li><a href = "#">Telewizja</a></li>
-                                <li><a href = "#">Telefonia</a></li>
-                            </ul>
-                        </div>
-
-                    </li>
-                    <li><a href = "#">Klienci</a></li>
-                    <li><a href = "#">Umowy</a></li>
-                    <li><a href = "#">O nas</a></li>
-                    <li>
-                        <b style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b>
+                <div class = "header">
+                    <div class = "navbar">
+                    <ul>
+                        <li><a href = "/admin/main">Strona główna</a></li>
+                        <li>Oferta
                         <div class = "submenu-1">
-                            <ul>
-                                <li><a href = "#">Wyloguj</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
+                                <ul>
+                                    <li><a href = "/admin/oferty_internet">Internet</a></li>
+                                    <li><a href = "/admin/oferty_telewizja">Telewizja</a></li>
+                                    <li><a href = "/admin/oferty_telefonia">Telefonia</a></li>
+                                </ul>
+                            </div>
+
+                        </li>
+                        <li><a href = "/admin/klienci">Klienci</a></li>
+                        <li><a href = "/admin/umowy">Umowy</a></li>
+                        <li><a href = "operatorData">O nas</a></li>
+                        <li>
+                            <b style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b>
+                            <div class = "submenu-1">
+                                <ul>
+                                    <li>
+                                        <form action = "#" th:action = "@{/perform_logout}" method = "post">
+                                        <button type = "submit" class = "logoutButton">Wyloguj</button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
 
     <div class = "content">
         <div class = "tableTitle">
@@ -70,14 +74,14 @@
                     <td th:text = "${ofertaInternet.dodatkiDoUmowy}">Dodatki do umowy</td>
                     <td th:text = "${ofertaInternet.kosztWypowiedzenia}">Koszt wypowiedzenia</td>
                     <td>
-                        <a th:href = "@{'/edit_oferta_internet/' + ${ofertaInternet.nrOferty}}"><button type = "button" id = "editButton" class = "buttonx">
+                        <a th:href = "@{'/admin/edit_oferta_internet/' + ${ofertaInternet.nrOferty}}"><button type = "button" id = "editButton" class = "buttonx">
                             <span class = "buttonText">Edytuj</span>
                             <span class = "buttonIcon">
                                 <ion-icon name="create-outline"></ion-icon>
                             </span>
                             </button></a>
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        <a th:href = "@{'/delete_oferta_internet/' + ${ofertaInternet.nrOferty}}"><button type = "button" id = "deleteButton" class = "buttonx">
+                        <a th:href = "@{'/admin/delete_oferta_internet/' + ${ofertaInternet.nrOferty}}"><button type = "button" id = "deleteButton" class = "buttonx">
                             <span class = "buttonText">Usuń</span>
                             <span class = "buttonIcon">
                                 <ion-icon name="trash-outline"></ion-icon>
@@ -89,7 +93,7 @@
         </table>
     </div>
         <div class = "newRecord">
-            <a href = "/new_oferta_internet"><button type = "button" id = "addButton" class = "addButton">
+            <a href = "/admin/new_oferta_internet"><button type = "button" id = "addButton" class = "addButton">
                 <span class = "buttonText">Dodaj nową ofertę</span>
                 <span class = "buttonIcon">
                     <ion-icon name="add-outline"></ion-icon>

@@ -2,42 +2,66 @@
 <html lang = "pl" xmlns = "http://www.w3.org/1999/xhtml" xmlns:th = "http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" type="text/css" href="style1.css">
-<!--<meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+<link rel="stylesheet" type="text/css" href="/css/tableStyle.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
 </head>
 <body>
-    <!--
-    <nav>
-        <ul>
-            <li><a href="#">Strona główna</a></li>
-            <li><a href="#">Strona główna</a></li>
-            <li><a href="#">Strona główna</a></li>
-            <li><a href="#">Strona główna</a></li>
-            <li><a href="#">Strona główna</a></li>
-        </ul>
-    </nav>
--->
-    
-<div>
-    <h1>Oferty</h1>
+<div class = "container">
+                <div class = "header">
+                    <div class = "navbar">
+                    <ul>
+                        <li><a href = "/admin/main">Strona główna</a></li>
+                        <li>Oferta
+                        <div class = "submenu-1">
+                                <ul>
+                                    <li><a href = "/admin/oferty_internet">Internet</a></li>
+                                    <li><a href = "/admin/oferty_telewizja">Telewizja</a></li>
+                                    <li><a href = "/admin/oferty_telefonia">Telefonia</a></li>
+                                </ul>
+                            </div>
 
-    <a href = "/new_oferta_telefonia">Dodaj nową ofertę</a>
-    <table border="1" cellpadding = "10">
+                        </li>
+                        <li><a href = "/admin/klienci">Klienci</a></li>
+                        <li><a href = "/admin/umowy">Umowy</a></li>
+                        <li><a href = "operatorData">O nas</a></li>
+                        <li>
+                            <b style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b>
+                            <div class = "submenu-1">
+                                <ul>
+                                    <li>
+                                        <form action = "#" th:action = "@{/perform_logout}" method = "post">
+                                        <button type = "submit" class = "logoutButton">Wyloguj</button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+    <div class = "content">
+        <div class = "tableTitle">
+            <h1>Oferta Telefonia</h1>
+        </div>
+        
+    <div class = "tableContainer">
+        <table class = "contentTable">
         <thead>
             <tr>
                 <th>Numer oferty</th>
-                <th>Pakiet danych [GB]</th>
-                <th>Pakiet połączeń krajowych [minuty]</th>
-                <th>Pakiet połączeń zagranicznych [minuty]</th>
+                <th>Pakiet danych</th>
+                <th>Pakiet połączeń krajowych</th>
+                <th>Pakiet połączeń zagranicznych</th>
                 <th>Pakiet SMS</th>
-                <th>Koszt wiadomości po przekroczeniu pakietu</th>
-                <th>Koszt połączeń krajowych po przekroczeniu pakietu[za minutę]</th>
-                <th>Koszt połączeń zagranicznych po przekroczeniu pakietu[za minutę]</th>
+                <th>Koszt wiadomości</th>
+                <th>Koszt połączeń krajowych</th>
+                <th>Koszt połączeń zagranicznych</th>
                 <th>Nazwa generacji</th>
                 <th>Opis generacji</th>
                 <th>Czas trwania</th>
                 <th>Cena</th>
-                <th>Dodatki do umowy</th>
+                <th>Dodatki</th>
                 <th>Koszt wypowiedzenia</th>
                 <th>Akcja</th>
                 
@@ -59,16 +83,40 @@
                 <td th:text = "${ofertaTelefonia.cena}">Cena</td>
                 <td th:text = "${ofertaTelefonia.dodatkiDoUmowy}">Dodatki do umowy</td>
                 <td th:text = "${ofertaTelefonia.kosztWypowiedzenia}">Koszt wypowiedzenia</td>
-                <td>
-                    <a th:href = "@{'/edit_oferta_telefonia/' + ${ofertaTelefonia.nrOferty}}">Edytuj</a>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a th:href = "@{'/delete_oferta_telefonia/' + ${ofertaTelefonia.nrOferty}}">Usuń</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
+                    <td>
+                        <a th:href = "@{'/admin/edit_oferta_telefonia/' + ${ofertaTelefonia.nrOferty}}"><button type = "button" id = "editButton" class = "buttonx">
+                            <span class = "buttonText">Edytuj</span>
+                            <span class = "buttonIcon">
+                                <ion-icon name="create-outline"></ion-icon>
+                            </span>
+                            </button></a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <a th:href = "@{'/admin/delete_oferta_telefonia/' + ${ofertaTelefonia.nrOferty}}"><button type = "button" id = "deleteButton" class = "buttonx">
+                            <span class = "buttonText">Usuń</span>
+                            <span class = "buttonIcon">
+                                <ion-icon name="trash-outline"></ion-icon>
+                            </span>
+                            </button></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        <div class = "newRecord">
+            <a href = "/admin/new_oferta_telefonia"><button type = "button" id = "addButton" class = "addButton">
+                <span class = "buttonText">Dodaj nową ofertę</span>
+                <span class = "buttonIcon">
+                    <ion-icon name="add-outline"></ion-icon>
+                </span>
+            </button></a>
+        </div>
+    </div>
+    <div class = "footer">
+    BDBT 2022, Operator sieci kablowej - Radosław Godlewski, Jakub Wojciechowski 
+    </div>
 </div>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 
