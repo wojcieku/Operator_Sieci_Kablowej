@@ -63,7 +63,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .successHandler(myAuthenticationSuccessHandler())
                 .and()
                 .logout()
-                .logoutUrl("/index")
+                .logoutUrl("/perform_logout")
+                .invalidateHttpSession(true)
+                .deleteCookies()
                 .logoutSuccessUrl("/index")
                 .permitAll();
 

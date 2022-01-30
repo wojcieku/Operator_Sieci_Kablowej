@@ -7,6 +7,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -32,6 +33,8 @@ import projekt_bdbt.Umowa.UmowaDAO;
 import projekt_bdbt.UmowaSzczegoly.UmowaSzczegoly;
 import projekt_bdbt.UmowaSzczegoly.UmowaSzczegolyDAO;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.nio.file.AccessDeniedException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -77,7 +80,14 @@ public class AppController {
     public String adminMainPage(Model model){
         return "/admin/admin_main";
     }
-
+//    @RequestMapping(value = "/perform_logout", method = RequestMethod.POST)
+//    public String logoutPage (HttpServletRequest request, HttpServletResponse response){
+////        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+////        if (auth != null){
+////            new SecurityContextLogoutHandler().logout(request, response, auth);
+////        }
+//        return "redirect:/login";
+//    }
     @RequestMapping("/new_adres")
     public String showNewAdresForm(Model model) {
         Adres adres = new Adres();
@@ -429,13 +439,12 @@ public class AppController {
         return mav;
     }
 
-    @RequestMapping(value = "/update_klient", method = RequestMethod.POST) //TODO w sec config: anyAuthority("ADMIN", "USER")
+    @RequestMapping(value = "/update_klient", method = RequestMethod.POST)
     public String updateKlient(@ModelAttribute("klient") Klient klient, @ModelAttribute("adres") Adres adres, @ModelAttribute("poczta") Poczta poczta) {
         adresDAO.update(adres, pocztaDAO.update(poczta));
         System.out.println(klient.getDataDolaczenia());
         klient.setNrAdresu(adres.getNrAdresu());
         klientDAO.update(klient);
-        //TODO if(authority.equals("ADMIN"){return "redirect:/klienci"}, else if "USER" return "redirect:/user/user_main"
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String authority = authentication.getAuthorities().toArray()[0].toString();
         if(authority.equals("ADMIN")) {
@@ -453,11 +462,15 @@ public class AppController {
         return "redirect:/admin/klienci";
     }
     @RequestMapping("/user/delete_klient/{nrKlienta}")
-    public String safeDeleteKlient(@PathVariable(name = "nrKlienta") int nrKlienta) {
-        //TODO getCurrentPrincipalName -> nrKlienta zalogowanego zeby mogl tylko siebie usunac (blad jesli ma umowy)
-        klientDAO.delete(nrKlienta);
-        return "redirect:/index";
+    public String safeDeleteKlient(@PathVariable(name = "nrKlienta") int nrKlienta) throws org.springframework.security.access.AccessDeniedException{
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication(); //klient nie moze usunac innego konta niz swoje
+        int id = klientDAO.getClientIdByEmail(authentication.getName());
+        if (id != nrKlienta) {
+            throw new org.springframework.security.access.AccessDeniedException("403 returned");
+        }
+        else {
+            klientDAO.delete(nrKlienta);
+            return "redirect:/perform_logout";
+        }
     }
-
-
 }
