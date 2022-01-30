@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Szczegóły</title>
+</head>
+<body>
+Numer oferty: <span th:text = "${ofertaTelewizja.nrOferty}">Numer oferty</span> <br/>
+Liczba kanałów: <span th:text = "${ofertaTelewizja.lacznaLiczbaKanalow}">Liczba kanałów</span> <br/>
+Liczba kanałów w jakośc Full HD: <span th:text = "${ofertaTelewizja.liczbaKanalowWysokiejJakosci}">Liczba kanałów w jakośc Full HD</span> <br/>
+Kanały zagraniczne zawarte w ofercie: <span th:text = "${ofertaTelewizja.czyKanalyZagraniczne}">Kanały zagraniczne zawarte w ofercie</span> <br/>
+Usługa HBO w ofercie: <span th:text = "${ofertaTelewizja.czyHomeBoxOffice}">Usługa HBO w ofercie</span> <br/>
+Cienamx w ofercie: <span th:text = "${ofertaTelewizja.czyCinemax}">Cienamx w ofercie</span> <br/>
+Kanały dla dzieci w ofercie: <span th:text = "${ofertaTelewizja.czyDzieci}">Kanały dla dzieci w ofercie</span> <br/>
+Czas trwania: <span th:text = "${ofertaTelewizja.czasTrwania}">Czas trwania</span> <br/>
+Cena [zł]: <span th:text = "${ofertaTelewizja.cena}">Cena</span> <br/>
+Dodatki do umowy: <span th:text = "${ofertaTelewizja.dodatkiDoUmowy}">Dodatki do umowy</span> <br/>
+Koszt wypowiedzenia [zł]: <span th:text = "${ofertaTelewizja.kosztWypowiedzenia}">Koszt wypowiedzenia</span> <br/>
+</body>
+</html>

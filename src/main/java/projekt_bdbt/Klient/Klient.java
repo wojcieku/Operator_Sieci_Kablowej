@@ -18,7 +18,6 @@ public class Klient {
     private String czyAktywne;
 
     public Klient() {
-
     }
 
     public Klient(int nrKlienta, String imie, String nazwisko, String nrTelefonu, String dataDolaczenia, String aktywnaUmowa, String nrDowodu, String pesel, String nrPaszportu, int nrOperatora, int nrAdresu, String email, String haslo, String authority, String czyAktywne) {

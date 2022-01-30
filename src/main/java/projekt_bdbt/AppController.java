@@ -33,6 +33,7 @@ import projekt_bdbt.Umowa.UmowaDAO;
 import projekt_bdbt.UmowaSzczegoly.UmowaSzczegoly;
 import projekt_bdbt.UmowaSzczegoly.UmowaSzczegolyDAO;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.nio.file.AccessDeniedException;
@@ -80,14 +81,7 @@ public class AppController {
     public String adminMainPage(Model model){
         return "/admin/admin_main";
     }
-//    @RequestMapping(value = "/perform_logout", method = RequestMethod.POST)
-//    public String logoutPage (HttpServletRequest request, HttpServletResponse response){
-////        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-////        if (auth != null){
-////            new SecurityContextLogoutHandler().logout(request, response, auth);
-////        }
-//        return "redirect:/login";
-//    }
+
     @RequestMapping("/new_adres")
     public String showNewAdresForm(Model model) {
         Adres adres = new Adres();
@@ -96,6 +90,7 @@ public class AppController {
         model.addAttribute("poczta", poczta);
         return "new_adres";
     }
+
 
     @RequestMapping(value = "/save_adres", method = RequestMethod.POST)
     public String saveAdres(@ModelAttribute("adres") Adres adres, @ModelAttribute("poczta") Poczta poczta) {
@@ -330,6 +325,7 @@ public class AppController {
             return mav;
         }
     }
+
     @RequestMapping(value="/user/newUmowaKlient")
     public String addUmowaForClient(Model model){
         Umowa umowa = new Umowa();
@@ -337,6 +333,24 @@ public class AppController {
         model.addAttribute(umowa);
         model.addAttribute(umowaSzczegoly);
         return "/user/new_umowa_klient";
+    }
+    @RequestMapping("/user/oferty_internet")
+    public String displayInternetOffers(Model model){
+        List<OfertaInternet> ofertaInternetList = ofertaInternetDAO.list();
+        model.addAttribute("ofertaInternetList", ofertaInternetList);
+        return "/user/oferty_internet_klient";
+    }
+    @RequestMapping("/user/oferty_telefonia")
+    public String displayPhoneOffers(Model model){
+        List<OfertaTelefonia> ofertaTelefoniaList = ofertaTelefoniaDAO.list();
+        model.addAttribute("ofertaTelefoniaList", ofertaTelefoniaList);
+        return "/user/oferty_telefonia_klient";
+    }
+    @RequestMapping("/user/oferty_telewizja")
+    public String displayTvOffers(Model model){
+        List<OfertaTelewizja> ofertaTelewizjaList = ofertaTelewizjaDAO.list();
+        model.addAttribute("ofertaTelewizjaList", ofertaTelewizjaList);
+        return "/user/oferty_telewizja_klient";
     }
     @RequestMapping(value="/user/saveNewUmowaKlient", method = RequestMethod.POST)
     public String saveNewUmowaForClient(@ModelAttribute("umowa") Umowa umowa, @ModelAttribute("umowaSzczegoly")UmowaSzczegoly umowaSzczegoly){
@@ -374,7 +388,7 @@ public class AppController {
         model.addAttribute(klient);
         model.addAttribute(adres);
         model.addAttribute(poczta);
-        return "new_klient";
+        return "/admin/new_klient";
     }
 
     @RequestMapping(value = "/admin/save_klient", method = RequestMethod.POST) //TODO hashowanie hasla
@@ -462,7 +476,7 @@ public class AppController {
         return "redirect:/admin/klienci";
     }
     @RequestMapping("/user/delete_klient/{nrKlienta}")
-    public String safeDeleteKlient(@PathVariable(name = "nrKlienta") int nrKlienta) throws org.springframework.security.access.AccessDeniedException{
+    public String safeDeleteKlient(@PathVariable(name = "nrKlienta") int nrKlienta,HttpServletRequest request) throws org.springframework.security.access.AccessDeniedException{
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication(); //klient nie moze usunac innego konta niz swoje
         int id = klientDAO.getClientIdByEmail(authentication.getName());
         if (id != nrKlienta) {
@@ -470,7 +484,20 @@ public class AppController {
         }
         else {
             klientDAO.delete(nrKlienta);
-            return "redirect:/perform_logout";
+            try {
+                request.logout();
+            } catch (ServletException e) {
+                e.printStackTrace();
+            }
+            return "redirect:/index";
         }
+    }
+    @RequestMapping("/user/about_me")
+    public String getInfoOfClient(Model model){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        int id = klientDAO.getClientIdByEmail(authentication.getName());
+        Klient klient = klientDAO.get(id);
+        model.addAttribute("klient", klient);
+        return "/user/klient_info";
     }
 }

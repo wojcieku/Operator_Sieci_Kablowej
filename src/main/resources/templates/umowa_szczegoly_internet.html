@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Szczegóły umowy</title>
+</head>
+<body>
+ Numer oferty: <span th:text="${ofertaInternet.nrOferty}">numer oferty</span> <br/>
+ Typ internetu: <span th:text="${ofertaInternet.typInternetu}">typ internetu</span> <br/>
+ Prędkość pobierania [Mb]: <span th:text = "${ofertaInternet.predkoscPobieraniaWMb}">Prędkośc pobierania [Mb/s]</span> <br/>
+ Prędkość wysyłania [Mb]: <span th:text = "${ofertaInternet.predkoscWysylaniaWMb}">Prędkośc wysyłania [Mb/s]</span> <br/>
+ Limit transferu [GB]: <span th:text = "${ofertaInternet.limitTransferu}">brak</span> <br/>
+ Czas trwania: <span th:text = "${ofertaInternet.czasTrwania}">Czas trwania</span> <br/>
+ Cena [zł]: <span th:text = "${ofertaInternet.cena}">Cena</span> <br/>
+ Dodatki do umowy: <span th:text = "${ofertaInternet.dodatkiDoUmowy}">Dodatki do umowy</span> <br/>
+ Koszt wypowiedzenia [zł]: <span th:text = "${ofertaInternet.kosztWypowiedzenia}">Koszt wypowiedzenia</span> <br/>
+</body>
+</html>

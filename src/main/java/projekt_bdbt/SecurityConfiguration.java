@@ -50,10 +50,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
 
-                .antMatchers("/", "/index").permitAll()
+                .antMatchers("/", "/index","/save_klient", "/new_klient").permitAll()
                 .antMatchers("/resources/**", "/static/**", "/webjars/**").permitAll()
                 .antMatchers("/admin/**", "/user/**").authenticated()
                 .antMatchers("/admin/**", "/main").hasAuthority("ADMIN")
+                .antMatchers("/user/**").hasAuthority("USER")
                 .antMatchers("/update_klient").hasAnyAuthority("ADMIN", "USER")
                 .anyRequest().authenticated()
                 .and()

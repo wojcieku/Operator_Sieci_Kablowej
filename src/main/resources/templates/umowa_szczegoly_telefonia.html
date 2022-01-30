@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Szczegóły</title>
+</head>
+<body>
+Numer oferty: <span th:text = "${ofertaTelefonia.nrOferty}">Numer oferty</span> <br/>
+Pakiet danych [GB]: <span th:text = "${ofertaTelefonia.pakietDanych}">Pakiet danych [GB]</span> <br/>
+Pakiet połączeń krajowych [minuty]: <span th:text = "${ofertaTelefonia.pakietPolaczenKrajowych}">Pakiet połączeń krajowych [minuty]</span> <br/>
+Pakiet połączeń zagranicznych [minuty]: <span th:text = "${ofertaTelefonia.pakietPolaczenZagranica}">Pakiet połączeń zagranicznych [minuty]</span> <br/>
+Pakiet SMS: <span th:text = "${ofertaTelefonia.pakietWiadomosci}">Pakiet SMS</span> <br/>
+Koszt wiadomości po przekroczeniu pakietu: <span th:text = "${ofertaTelefonia.kosztWiadomosci}">Koszt wiadomości po przekroczeniu pakietu</span> <br/>
+Koszt połączeń krajowych po przekroczeniu pakietu[za minutę]: <span th:text = "${ofertaTelefonia.polaczeniaKrajoweKoszt}">Koszt połączeń krajowych po przekroczeniu pakietu[za minutę]</span> <br/>
+Koszt połączeń zagranicznych po przekroczeniu pakietu[za minutę]: <span th:text = "${ofertaTelefonia.polaczeniaZagranicaKoszt}">Koszt połączeń zagranicznych po przekroczeniu pakietu[za minutę]</span> <br/>
+Nazwa generacji: <span th:text = "${ofertaTelefonia.nazwaGeneracji}">Nazwa generacji</span> <br/>
+Opis generacji: <span th:text = "${ofertaTelefonia.opis}">Opis generacji</span> <br/>
+Czas trwania: <span th:text = "${ofertaTelefonia.czasTrwania}">Czas trwania</span> <br/>
+Cena: <span th:text = "${ofertaTelefonia.cena}">Cena</span> <br/>
+Dodatki do umowy: <span th:text = "${ofertaTelefonia.dodatkiDoUmowy}">Dodatki do umowy</span> <br/>
+Koszt wypowiedzenia: <span th:text = "${ofertaTelefonia.kosztWypowiedzenia}">Koszt wypowiedzenia</span> <br/>
+</body>
+</html>

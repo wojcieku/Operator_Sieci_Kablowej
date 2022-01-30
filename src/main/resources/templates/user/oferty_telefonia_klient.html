@@ -2,67 +2,97 @@
 <html lang = "pl" xmlns = "http://www.w3.org/1999/xhtml" xmlns:th = "http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="style1.css">
-    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <link rel="stylesheet" type="text/css" href="/css/tableStyle.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
 </head>
 <body>
-<!--
-<nav>
-    <ul>
-        <li><a href="#">Strona główna</a></li>
-        <li><a href="#">Strona główna</a></li>
-        <li><a href="#">Strona główna</a></li>
-        <li><a href="#">Strona główna</a></li>
-        <li><a href="#">Strona główna</a></li>
-    </ul>
-</nav>
--->
+<div class = "container">
+    <div class = "header">
+        <div class = "navbar">
+            <ul>
+                <li><a href = "/user/main">Strona główna</a></li>
+                <li>Oferta
+                    <div class = "submenu-1">
+                        <ul>
+                            <li><a href = "/user/oferty_internet">Internet</a></li>
+                            <li><a href = "/user/oferty_telewizja">Telewizja</a></li>
+                            <li><a href = "/user/oferty_telefonia">Telefonia</a></li>
+                        </ul>
+                    </div>
 
-<div>
-    <h1>Oferty</h1>
+                </li>
+                <li><a href = "/user/umowy_klient">Umowy</a></li>
+                <li><a href = "/operatorData">O nas</a></li>
+                <li>
+                    <b style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b>
+                    <div class = "submenu-1">
+                        <ul>
+                            <li>
+                                <form action = "#" th:action = "@{/perform_logout}" method = "post">
+                                    <button type = "submit" class = "logoutButton">Wyloguj</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
 
+    <div class = "content">
+        <div class = "tableTitle">
+            <h1>Oferta Telefonia</h1>
+        </div>
 
-    <table border="1" cellpadding = "10">
-        <thead>
-        <tr>
-            <th>Numer oferty</th>
-            <th>Pakiet danych [GB]</th>
-            <th>Pakiet połączeń krajowych [minuty]</th>
-            <th>Pakiet połączeń zagranicznych [minuty]</th>
-            <th>Pakiet SMS</th>
-            <th>Koszt wiadomości po przekroczeniu pakietu</th>
-            <th>Koszt połączeń krajowych po przekroczeniu pakietu[za minutę]</th>
-            <th>Koszt połączeń zagranicznych po przekroczeniu pakietu[za minutę]</th>
-            <th>Nazwa generacji</th>
-            <th>Opis generacji</th>
-            <th>Czas trwania</th>
-            <th>Cena</th>
-            <th>Dodatki do umowy</th>
-            <th>Koszt wypowiedzenia</th>
+        <div class = "tableContainer">
+            <table class = "contentTable">
+                <thead>
+                <tr>
+                    <th>Numer oferty</th>
+                    <th>Pakiet danych</th>
+                    <th>Pakiet połączeń krajowych</th>
+                    <th>Pakiet połączeń zagranicznych</th>
+                    <th>Pakiet SMS</th>
+                    <th>Koszt wiadomości</th>
+                    <th>Koszt połączeń krajowych</th>
+                    <th>Koszt połączeń zagranicznych</th>
+                    <th>Nazwa generacji</th>
+                    <th>Opis generacji</th>
+                    <th>Czas trwania</th>
+                    <th>Cena</th>
+                    <th>Dodatki</th>
+                    <th>Koszt wypowiedzenia</th>
 
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each = "ofertaTelefonia : ${ofertaTelefoniaList}">
-            <td th:text = "${ofertaTelefonia.nrOferty}">Numer oferty</td>
-            <td th:text = "${ofertaTelefonia.pakietDanych}">Pakiet danych [GB]</td>
-            <td th:text = "${ofertaTelefonia.pakietPolaczenKrajowych}">Pakiet połączeń krajowych [minuty]</td>
-            <td th:text = "${ofertaTelefonia.pakietPolaczenZagranica}">Pakiet połączeń zagranicznych [minuty]</td>
-            <td th:text = "${ofertaTelefonia.pakietWiadomosci}">Pakiet SMS</td>
-            <td th:text = "${ofertaTelefonia.kosztWiadomosci}">Koszt wiadomości po przekroczeniu pakietu</td>
-            <td th:text = "${ofertaTelefonia.polaczeniaKrajoweKoszt}">Koszt połączeń krajowych po przekroczeniu pakietu[za minutę]</td>
-            <td th:text = "${ofertaTelefonia.polaczeniaZagranicaKoszt}">Koszt połączeń zagranicznych po przekroczeniu pakietu[za minutę]</td>
-            <td th:text = "${ofertaTelefonia.nazwaGeneracji}">Nazwa generacji</td>
-            <td th:text = "${ofertaTelefonia.opis}">Opis generacji</td>
-            <td th:text = "${ofertaTelefonia.czasTrwania}">Czas trwania</td>
-            <td th:text = "${ofertaTelefonia.cena}">Cena</td>
-            <td th:text = "${ofertaTelefonia.dodatkiDoUmowy}">Dodatki do umowy</td>
-            <td th:text = "${ofertaTelefonia.kosztWypowiedzenia}">Koszt wypowiedzenia</td>
-        </tr>
-        </tbody>
-    </table>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each = "ofertaTelefonia : ${ofertaTelefoniaList}">
+                    <td th:text = "${ofertaTelefonia.nrOferty}">Numer oferty</td>
+                    <td th:text = "${ofertaTelefonia.pakietDanych}">Pakiet danych [GB]</td>
+                    <td th:text = "${ofertaTelefonia.pakietPolaczenKrajowych}">Pakiet połączeń krajowych [minuty]</td>
+                    <td th:text = "${ofertaTelefonia.pakietPolaczenZagranica}">Pakiet połączeń zagranicznych [minuty]</td>
+                    <td th:text = "${ofertaTelefonia.pakietWiadomosci}">Pakiet SMS</td>
+                    <td th:text = "${ofertaTelefonia.kosztWiadomosci}">Koszt wiadomości po przekroczeniu pakietu</td>
+                    <td th:text = "${ofertaTelefonia.polaczeniaKrajoweKoszt}">Koszt połączeń krajowych po przekroczeniu pakietu[za minutę]</td>
+                    <td th:text = "${ofertaTelefonia.polaczeniaZagranicaKoszt}">Koszt połączeń zagranicznych po przekroczeniu pakietu[za minutę]</td>
+                    <td th:text = "${ofertaTelefonia.nazwaGeneracji}">Nazwa generacji</td>
+                    <td th:text = "${ofertaTelefonia.opis}">Opis generacji</td>
+                    <td th:text = "${ofertaTelefonia.czasTrwania}">Czas trwania</td>
+                    <td th:text = "${ofertaTelefonia.cena}">Cena</td>
+                    <td th:text = "${ofertaTelefonia.dodatkiDoUmowy}">Dodatki do umowy</td>
+                    <td th:text = "${ofertaTelefonia.kosztWypowiedzenia}">Koszt wypowiedzenia</td>
 
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class = "footer">
+        BDBT 2022, Operator sieci kablowej - Radosław Godlewski, Jakub Wojciechowski
+    </div>
 </div>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 
