@@ -456,7 +456,7 @@ public class AppController {
     @RequestMapping(value = "/update_klient", method = RequestMethod.POST)
     public String updateKlient(@ModelAttribute("klient") Klient klient, @ModelAttribute("adres") Adres adres, @ModelAttribute("poczta") Poczta poczta) {
         adresDAO.update(adres, pocztaDAO.update(poczta));
-        System.out.println(klient.getDataDolaczenia());
+        klient.setHaslo(passwordEncoder.encode(klient.getHaslo()));
         klient.setNrAdresu(adres.getNrAdresu());
         klientDAO.update(klient);
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

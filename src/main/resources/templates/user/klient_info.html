@@ -19,7 +19,7 @@
 </style>
 <body>
 <div align="center" >
-    <a href="/user/edit_klient/{nrKlienta}">Edytuj</a> <br/>
+    <a th:href="@{'/user/edit_klient/'+ ${klient.nrKlienta}}">Edytuj</a> <br/> 
     Imię: <span th:text="${klient.imie}" >Imie</span><br/>
     Nazwisko: <span th:text="${klient.nazwisko}">nazwisko</span> <br/>
     Numer telefonu: <span th:text="${klient.nrTelefonu}">numer telefonu</span> <br/>
