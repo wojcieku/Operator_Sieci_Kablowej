@@ -1,120 +1,145 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang = "pl" xmlns = "http://www.w3.org/1999/xhtml" xmlns:th = "http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Edytuj Dane:</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="/css/editFormStyle.css">
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 </head>
 <body>
-    <div align = "center">
-        <h1>Edytuj Dane:</h1>
-        <br>
-        <form action="#" th:action = "@{/update_klient}" method = "post">
-            <table border = "1" cellpadding = "10">
-            <tr>
-            <td>Numer klienta</td>
-                <td><input type = "hidden" th:value = "${klient.nrKlienta}" name = "nrKlienta" required readonly = "readonly"></td>
-            </tr>
-            <tr>
-            <td>Imię</td>
-                <td><input type = "text" th:value = "${klient.imie}" name = "imie" required readonly = "readonly"></td>
-            </tr>
-            
-            <tr>
-            <td>Nazwisko</td>
-                <td><input type = "text" th:value = "${klient.nazwisko}" name = "nazwisko" required readonly = "readonly"></td>
-            </tr>
-            
-            <tr>
-            <td>Numer telefonu</td>
-                <td><input type = "text" maxlength="11" th:value = "${klient.nrTelefonu}" name = "nrTelefonu" required></td>
-            </tr>
-            <tr>
-            <td>Czy aktywna umowa</td>
-                <td><select id = "aktywnaUmowa" th:value = "${klient.aktywnaUmowa}" name = "aktywnaUmowa" required>
-                    <option value = "T">Tak</option>
-                    <option value = "N">Nie</option>
-                    </select>
-                </td>
-            </tr>    
-            <tr>
-            <td>Seria i numer dowodu osobistego</td>
-                <td><input type = "text" th:value = "${klient.nrDowodu}" name = "nrDowodu" readonly = "readonly"></td>
-            </tr>
-            <tr>
-            <td>Numer PESEL</td>
-                <td><input type = "text" maxlength = "11" th:value = "${klient.pesel}" name = "pesel" required readonly = "readonly"></td>
-            </tr>
-            <tr>
-            <td>Numer paszportu</td>
-                <td><input type = "text" th:value = "${klient.nrPaszportu}" name = "nrPaszportu" ></td>
-            </tr>
-            <tr>
-            <td>Adres e-mail</td>
-                <td><input type = "text" th:value = "${klient.email}" name = "email" required></td>
-            </tr>
-            <tr>
-            <td>Hasło</td>
-                <td><input type = "Password" th:value = "${klient.haslo}" name = "haslo" required></td>
-            </tr>
-            <tr>
-            <td>Rola</td>
-                <td><input type = "text" th:value = "${klient.authority}" name = "authority" required></td>
-            </tr>
-            <tr>
-            <td>Czy konto aktywne</td>
-                    <td><select id = "czyAktywne" th:value = "${klient.czyAktywne}" name = "czyAktywne" required>
-                    <option value = "T">Tak</option>
-                    <option value = "N">Nie</option>
-                    </select>
-                </td>
-            </tr>
-                
-            
+    <div class = "container">
+                <div class = "header">
+                    <div class = "navbar">
+                    <ul>
+                        <li><a href = "/admin/main">Strona główna</a></li>
+                        <li>Oferta
+                        <div class = "submenu-1">
+                                <ul>
+                                    <li><a href = "/admin/oferty_internet">Internet</a></li>
+                                    <li><a href = "/admin/oferty_telewizja">Telewizja</a></li>
+                                    <li><a href = "/admin/oferty_telefonia">Telefonia</a></li>
+                                </ul>
+                            </div>
+
+                        </li>
+                        <li><a href = "/admin/klienci">Klienci</a></li>
+                        <li><a href = "/admin/umowy">Umowy</a></li>
+                        <li><a href = "operatorData">O nas</a></li>
+                        <li>
+                            <b style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b>
+                            <div class = "submenu-1">
+                                <ul>
+                                    <li><a href = "/perform_logout">Wyloguj</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
         
-            <tr>
-            <td>Numer adresu</td>
-                <td><input type = "hidden" th:value = "${klient.nrAdresu}" name = "nrAdresu" required readonly = "readonly"></td>
-            </tr>
-            <tr>
-            <td>Miasto</td>
-                <td><input type = "text" th:value = "${adres.miasto}" name = "miasto" required></td>
-            </tr>
-            
-            <tr>
-            <td>Ulica</td>
-                <td><input type = "text" th:value = "${adres.ulica}" name = "ulica" required></td>
-            </tr>
-            
-            <tr>
-            <td>Numer domu</td>
-                <td><input type = "text" th:value = "${adres.nrDomu}" name = "nrDomu" required></td>
-            </tr>
-            
-            <tr>
-            <td>Numer lokalu</td>
-                <td><input type = "text" th:value = "${adres.nrLokalu}" name = "nrLokalu"></td>
-            </tr>
-            
-            
-            
-            
-            <tr>
-            <td>Kod pocztowy</td>
-                <td><input type = "text" th:value = "${poczta.kodPocztowy}" name = "kodPocztowy" required></td>
-            </tr>
-            
-            <tr>
-            <td>Poczta</td>
-                <td><input type = "text" th:value = "${poczta.poczta}" name = "poczta" required></td>
-            </tr>
-                <tr>
-                    <td colspan = "2"><button type = "submit">Zapisz</button>
-                    </td>
-                </tr>
-            </table>
-
-        </form>
-
+    <div class = "mainContent">
+        <div class = "content">
+        <div class = "title">Edycja klienta</div>
+        <div class = "newForm">
+            <form action = "#" th:action = "@{/update_klient}" method = "post">
+                <div class = "selectDetails">
+                        <div class = "inputSelect">
+                            <span class = "selectTitle">Rola</span>
+                            <select id = "dodatkiDoUmowy" th:value = "${klient.authority}" name = "authority" required>
+                            <option value = "USER">User</option>
+                            <option value = "ADMIN">Admin</option>
+                            </select>
+                        </div>
+                        <div class = "inputSelect">
+                            <span class = "selectTitle">Aktywna umowa</span>
+                            <select id = "dodatkiDoUmowy" th:value = "${klient.aktywnaUmowa}" name = "aktywnaUmowa" required>
+                                <option value = "N">Nie</option>
+                                <option value = "T">Tak</option>
+                            </select>
+                        </div>
+                        <div class = "inputSelect">
+                            <span class = "selectTitle">Aktywne konto</span>
+                            <select id = "dodatkiDoUmowy" th:value = "${klient.czyAktywne}" name = "czyAktywne" required>
+                                <option value = "T">Tak</option>
+                                <option value = "N">Nie</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class = "userDetails">
+                    <div class = "inputBox">
+                        <span class = "details">Numer klienta</span>
+                        <input type = "Number" th:value = "${klient.nrKlienta}" name = "nrKlienta" readonly = "readonly" required>
+                    </div>
+                    <div class = "inputBox">
+                        <span class = "details">Imię</span>
+                        <input type = "text" th:value = "${klient.imie}" name = "imie" placeholder = "Podaj imię" required>
+                    </div>
+                    <div class = "inputBox">
+                        <span class = "details">Nazwisko</span>
+                        <input type = "text" th:value = "${klient.nazwisko}" name = "nazwisko" placeholder = "Podaj nazwisko" required>
+                    </div>
+                    <div class = "inputBox">
+                        <span class = "details">Numer telefonu</span>
+                        <input type = "Number" th:value = "${klient.nrTelefonu}" name = "nrTelefonu" placeholder = "Podaj numer telefonu (11 cyfr)" required>
+                    </div>
+                    <div class = "inputBox">
+                        <span class = "details">Seria i numer dowodu osobistego</span>
+                        <input type = "Number" th:value = "${klient.nrDowodu}" name = "nrDowodu" placeholder = "Podaj serię i numer dowodu osobistego">
+                    </div>
+                    <div class = "inputBox">
+                        <span class = "details">Numer PESEL</span>
+                        <input type = "Number" th:value = "${klient.pesel}" name = "pesel" placeholder = "Podaj numer PESEL">
+                    </div>
+                    <div class = "inputBox">
+                        <span class = "details">Numer paszportu</span>
+                        <input type = "text" th:value = "${klient.nrPaszportu}" name = "nrPaszportu" placeholder = "Podaj numer paszportu">
+                    </div>
+                    <div class = "inputBox">
+                        <span class = "details">Adres e-mail</span>
+                        <input type = "text" th:value = "${klient.email}" name = "email" placeholder = "Podaj adres e-mail" required>
+                    </div>
+                    <div class = "inputBox">
+                        <span class = "details">Hasło</span>
+                        <input type = "Password" th:value = "${klient.haslo}" name = "haslo" placeholder = "Podaj hasło" required>
+                    </div>
+                        <input type = "hidden" th:value = "${klient.nrAdresu}" name = "nrAdresu" placeholder = "Opisz generację telefonii">
+                    <div class = "inputBox">
+                        <span class = "details">Miasto</span>
+                        <input type = "text" th:value = "${adres.miasto}" name = "miasto" placeholder = "Podaj nazwę miasta" required>
+                    </div>
+                    <div class = "inputBox">
+                        <span class = "details">Ulica</span>
+                        <input type = "text" th:value = "${adres.ulica}" name = "ulica" placeholder = "Podaj nazwę ulicy" required>
+                    </div>
+                    <div class = "inputBox">
+                        <span class = "details">Numer domu</span>
+                        <input type = "Number" th:value = "${adres.nrDomu}" name = "nrDomu" placeholder = "Podaj numer domu" required>
+                    </div>
+                    <div class = "inputBox">
+                        <span class = "details">Numer lokalu</span>
+                        <input type = "Number" th:value = "${adres.nrLokalu}" name = "nrLokalu" placeholder = "Podaj numer lokalu">
+                    </div>
+                    <div class = "inputBox">
+                        <span class = "details">Kod pocztowy</span>
+                        <input type = "text" th:value = "${poczta.kodPocztowy}" name = "kodPocztowy" placeholder = "Podaj kod pocztowy" required>
+                    </div>
+                    <div class = "inputBox">
+                        <span class = "details">Poczta</span>
+                        <input type = "text" th:value = "${poczta.poczta}" name = "poczta" placeholder = "Podaj miejscowość, w której znajduje się poczta" required>
+                    </div>
+                </div>
+                <div class = "confirmButton">
+                <input type = "submit" value = "Uaktualnij ofertę ">
+                </div>
+            </form>
+        </div>
+        </div>
     </div>
+        <div class = "footer">
+            BDBT 2022, Operator sieci kablowej - Radosław Godlewski, Jakub Wojciechowski 
+        </div>
+</div>      
 </body>
+
+
 </html>

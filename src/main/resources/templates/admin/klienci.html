@@ -2,27 +2,51 @@
 <html lang = "pl" xmlns = "http://www.w3.org/1999/xhtml" xmlns:th = "http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" type="text/css" href="style1.css">
-<!--<meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+<link rel="stylesheet" type="text/css" href="/css/klientStyle.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
 </head>
 <body>
-    <!--
-    <nav>
-        <ul>
-            <li><a href="#">Strona główna</a></li>
-            <li><a href="#">Strona główna</a></li>
-            <li><a href="#">Strona główna</a></li>
-            <li><a href="#">Strona główna</a></li>
-            <li><a href="#">Strona główna</a></li>
-        </ul>
-    </nav>
--->
-    
-<div>
-    <h1>Klienci</h1>
+<div class = "container">
+                <div class = "header">
+                    <div class = "navbar">
+                    <ul>
+                        <li><a href = "/admin/main">Strona główna</a></li>
+                        <li>Oferta
+                        <div class = "submenu-1">
+                                <ul>
+                                    <li><a href = "/admin/oferty_internet">Internet</a></li>
+                                    <li><a href = "/admin/oferty_telewizja">Telewizja</a></li>
+                                    <li><a href = "/admin/oferty_telefonia">Telefonia</a></li>
+                                </ul>
+                            </div>
 
-    <a href = "/new_klient">Dodaj klienta</a>
-    <table border="1" cellpadding = "10">
+                        </li>
+                        <li><a href = "/admin/klienci">Klienci</a></li>
+                        <li><a href = "/admin/umowy">Umowy</a></li>
+                        <li><a href = "operatorData">O nas</a></li>
+                        <li>
+                            <b style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b>
+                            <div class = "submenu-1">
+                                <ul>
+                                    <li>
+                                        <form action = "#" th:action = "@{/perform_logout}" method = "post">
+                                        <button type = "submit" class = "logoutButton">Wyloguj</button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+    <div class = "content">
+        <div class = "tableTitle">
+            <h1>Klienci</h1>
+        </div>
+        
+    <div class = "tableContainer">
+        <table class = "contentTable">
         <thead>
             <tr>
                 <th>Numer klienta</th>
@@ -60,16 +84,32 @@
                 <td th:text = "${klient.haslo}">Hasło</td>
                 <td th:text = "${klient.authority}">Rola</td>
                 <td th:text = "${klient.czyAktywne}">Konto aktywne</td>
-                <td>
-                    <a th:href = "@{'/admin/edit_klient/' + ${klient.nrKlienta}}">Edytuj</a>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a th:href = "@{'/admin/delete_klient/' + ${klient.nrKlienta}}">Usuń</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
+                    <td>
+                        <a th:href = "@{'/admin/edit_klient/' + ${klient.nrKlienta}}"><button type = "button" id = "editButton" class = "buttonx">
+                            <span class = "buttonText">Edytuj</span>
+                            <span class = "buttonIcon">
+                                <ion-icon name="create-outline"></ion-icon>
+                            </span>
+                            </button></a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <a th:href = "@{'/admin/delete_klient/' + ${klient.nrKlienta}}"><button type = "button" id = "deleteButton" class = "buttonx">
+                            <span class = "buttonText">Usuń</span>
+                            <span class = "buttonIcon">
+                                <ion-icon name="trash-outline"></ion-icon>
+                            </span>
+                            </button></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
+    <div class = "footer">
+    BDBT 2022, Operator sieci kablowej - Radosław Godlewski, Jakub Wojciechowski 
+    </div>
 </div>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 

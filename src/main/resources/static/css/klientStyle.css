@@ -1,0 +1,280 @@
+*
+{
+    padding: 0;
+    margin: 0;
+}
+body
+{
+    background-color: #ffffff;
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+    font-family: 'Montserrat', sans-serif;
+    height: 100%;
+}
+.container
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.logoutButton
+{
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    text-decoration: underline;
+    font-family: inherit;
+    font-size: inherit;
+    text-decoration: none;
+    color: #ffffff;
+}
+.tableTitle
+{
+    padding: 30px;
+    text-align: center;
+}
+.tableContainer
+{
+    left: auto;
+    right: auto;
+    max-height: 400px;
+    width: 99.9%;
+    overflow-y: scroll;
+}
+.header
+{
+    width: 100%;
+}
+.content
+{
+    height: 80%;
+}
+.footer
+{
+    margin-bottom: 0px;
+    width: 100%;
+    text-align: center;
+    background: #22649c;
+    color: #ffffff;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    position: absolute;
+    bottom: 0;
+}
+.navbar
+{
+    background: #22649c;
+    text-align: center;
+    
+}
+.navbar ul
+{
+    display: inline-flex;
+    list-style: none;
+    color: #ffffff;
+}
+.navbar ul li
+{
+    width: 120px;
+    margin: 15px;
+    padding: 15px;
+}
+.navbar ul li a
+{
+    text-decoration: none;
+    color: #ffffff;
+}
+.navbar ul li:hover
+{
+    background: #11538b;
+    border-radius: 3px;
+}
+.submenu-1
+{
+    display: none;
+}
+.navbar ul li:hover .submenu-1
+{
+    display: block;
+    position: absolute;
+    background: #22649c;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+.navbar ul li:hover .submenu-1 ul
+{
+    display: block;
+    margin: 10px;
+}
+.navbar ul li:hover .submenu-1 ul li
+{
+    width: 150px;
+    padding: 10px;
+    border-bottom: 1px dotted #ffffff;
+    background: transparent;
+    border-radius: 0;
+    text-align: left;
+}
+.navbar ul li:hover .submenu-1 ul li:last-child
+{
+    border-bottom: none;
+}
+.navbar ul li:hover .submenu-1 ul li a:hover
+{
+    color: #eeeeee;
+}
+
+
+.contentTable
+{
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px, 0;
+    font-size: 0.9 em;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0,0.15);
+}
+.contentTable thead tr
+{
+    background-color: #22649c;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+.contentTable th
+{
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 12px;
+    padding-top: 12px;
+}
+.contentTable td
+{
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 12px;
+    padding-top: 12px;
+}
+.contentTable tbody tr
+{
+    border-bottom: 1px solid #dddddd;
+}
+.contentTable tbody tr:nth-of-type(even)
+{
+    background-color: #f3f3f3;
+}
+.contentTable tbody tr:last-of-type
+{
+    border-bottom: 2px solid #22649c;
+}
+.contentTable tbody tr:hover
+{
+    font-weight: bold;
+    color: #22649c;
+}
+.buttonx
+{
+    display: inline-flex;
+    height: 30px;
+    width: 100px;
+    padding: 0;
+    border-radius: 5px;
+    overflow: hidden;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+}
+#editButton
+{
+    background: #12821c;
+    outline: none;
+    
+}
+#deleteButton
+{
+    background: #8a0e1c;
+    outline: none;
+    
+}
+#editButton:hover
+{
+    background: #01710b;
+    
+}
+#editButton:active
+{
+    background: #00600a;
+    
+}
+#deleteButton:hover
+{
+    background: #790d0b;
+}
+#deleteButton:active
+{
+    background: #680c0a;
+}
+.buttonText, .buttonIcon
+{
+    display: inline-flex;
+    align-items: center;
+    padding: 0 10px;
+    color: #ffffff;
+    height: 100%;
+    
+}
+.buttonIcon
+{
+    font-size: 1.5em;
+    background: rgba(0,0,0,0.08);
+}
+
+.buttonIconx
+{
+    margin-left: 40px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 10px;
+    color: #ffffff;
+    height: 100%;
+    font-size: 1.5em;
+    background: rgba(0,0,0,0.08);
+}
+.newRecord
+{
+    text-align: center;
+    margin-top: 20px;
+}
+.addButton
+{
+    display: inline-flex;
+    height: 50px;
+    width: 200px;
+    padding: 0;
+    border-radius: 10px;
+    border: none;
+    overflow: hidden;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    background: #22649c;
+    text-decoration: none;
+    outline: none;
+}
+a
+{
+    text-decoration: none;
+}
+.addButton:hover
+{
+    background: #11538b;
+}
+.addButton:active
+{
+    background: #00427a;
+}
