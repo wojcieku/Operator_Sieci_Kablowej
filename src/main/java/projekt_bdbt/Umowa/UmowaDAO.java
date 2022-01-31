@@ -37,7 +37,7 @@ public class UmowaDAO {
         return umowa;
     }
     public void update(Umowa umowa){
-        String sql = "UPDATE UMOWY SET data=:data, nr_klienta=:nrKlienta, nr_ofert=:nrOferty where nr_umowy=:nrUmowy";
+        String sql = "UPDATE UMOWY SET data=:data, nr_klienta=:nrKlienta, nr_oferty=:nrOferty where nr_umowy=:nrUmowy";
         BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(umowa);
         NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);
 

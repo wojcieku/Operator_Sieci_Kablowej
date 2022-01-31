@@ -1,42 +1,84 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang = "pl" xmlns = "http://www.w3.org/1999/xhtml" xmlns:th = "http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Formularz nowej umowy</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="/css/newFormStyle.css">
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>Nowa umowa</title>
 </head>
 <body>
-<div align="center">
-    <h1>Dodaj nową umowę</h1>
-    <br/>
-    <a  href="http://localhost:8080/oferty_telewizja" target="_blank">Sprawdź oferty telewizji</a>
-    <br/>
-    <br/>
-    <a href="/oferty_internet">Sprawdź oferty internetu</a>
-    <br/>
-    <br/>
-    <a href="/oferty_telefonia">Sprawdź oferty telefonii</a>
-    <br/><br/>
+    <div class = "container">
+                <div class = "header">
+                    <div class = "navbar">
+                    <ul>
+                        <li><a href = "/admin/main">Strona główna</a></li>
+                        <li>Oferta
+                        <div class = "submenu-1">
+                                <ul>
+                                    <li><a href = "/admin/oferty_internet">Internet</a></li>
+                                    <li><a href = "/admin/oferty_telewizja">Telewizja</a></li>
+                                    <li><a href = "/admin/oferty_telefonia">Telefonia</a></li>
+                                </ul>
+                            </div>
 
-    <form action="#" th:action="@{/admin/saveNewUmowa}" method="post">
-        <table border = "1" cellpadding="10">
-            <tr>
-                <td>Data podpisania:</td>
-                <td><input type="date" th:value="${umowa.data}" name="data" required></td>
-            </tr>
-            <tr>
-                <td>Numer klienta:</td>
-                <td><input type="number" th:value="${umowa.nrKlienta}" name="nrKlienta" min="1" required></td>
-            </tr>
-            <tr>
-                <td>Numer oferty:</td>
-                <td><input type="number" th:value="${umowa.nrOferty}" name="nrOferty" min="1" required></td>
-            </tr>
-            <tr>
-                <td colspan="2"><button type="submit">Dodaj umowę</button></td>
-            </tr>
-        </table>
-    </form>
-</div>
+                        </li>
+                        <li><a href = "/admin/klienci">Klienci</a></li>
+                        <li><a href = "/admin/umowy">Umowy</a></li>
+                        <li><a href = "operatorData">O nas</a></li>
+                        <li>
+                            <b style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b>
+                            <div class = "submenu-1">
+                                <ul>
+                                    <li>
+                                        <form action = "#" th:action = "@{/perform_logout}" method = "post">
+                                        <button type = "submit" class = "logoutButton">Wyloguj</button>
+                                        </form>
+                                    </li>
+                                    <li><a href = "/admin/about_me">Moje dane</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        
+    <div class = "mainContent">
+        <div class = "content">
+        <div class = "title">Nowa umowa</div>
+        <div class = "newForm">
+            <form action = "#" th:action="@{/admin/saveNewUmowa}" method = "post">
+                <div class = "selectDetails">
+                        <div class = "inputSelect">
+                            
+                        </div>
+                    </div>
+                    <div class = "userDetails">
+                    <div class = "inputBox">
+                        <span class = "details">Data podpisania</span>
+                        <input type="date" th:value="${umowa.data}" name="data" required>
+                    </div>
+                    <div class = "inputBox">
+                        <span class = "details">Numer klienta</span>
+                        <input type = "text" th:value = "${umowa.nrKlienta}" name = "nrKlienta" placeholder = "Podaj numer klienta" required>
+                    </div>
+                    <div class = "inputBox">
+                        <span class = "details">Numer oferty</span>
+                        <input type = "Number" step = "0.01" th:value = "${umowa.nrOferty}" name = "nrOferty" placeholder = "Podaj numer oferty" required>
+                    </div>
+                </div>
+                <div class = "confirmButton">
+                <input type = "submit" value = "Dodaj umowę ">
+                </div>
+            </form>
+        </div>
+        </div>
+    </div>
+        <div class = "footer">
+            BDBT 2022, Operator sieci kablowej - Radosław Godlewski, Jakub Wojciechowski 
+        </div>
+</div>      
 </body>
+
+
 </html>

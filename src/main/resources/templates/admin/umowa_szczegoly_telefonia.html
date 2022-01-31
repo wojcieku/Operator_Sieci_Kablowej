@@ -9,36 +9,37 @@
 <body>
 <div class = "container">
     <div class = "header">
-        <div class = "navbar">
-            <ul>
-                <li><a href = "/user/main">Strona główna</a></li>
-                <li>Oferta
-                    <div class = "submenu-1">
-                        <ul>
-                            <li><a href = "/user/oferty_internet">Internet</a></li>
-                            <li><a href = "/user/oferty_telewizja">Telewizja</a></li>
-                            <li><a href = "/user/oferty_telefonia">Telefonia</a></li>
-                        </ul>
-                    </div>
+                    <div class = "navbar">
+                    <ul>
+                        <li><a href = "/admin/main">Strona główna</a></li>
+                        <li>Oferta
+                        <div class = "submenu-1">
+                                <ul>
+                                    <li><a href = "/admin/oferty_internet">Internet</a></li>
+                                    <li><a href = "/admin/oferty_telewizja">Telewizja</a></li>
+                                    <li><a href = "/admin/oferty_telefonia">Telefonia</a></li>
+                                </ul>
+                            </div>
 
-                </li>
-                <li><a href = "/user/umowy_klient">Umowy</a></li>
-                <li><a href = "/operatorData">O nas</a></li>
-                <li>
-                    <b style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b>
-                    <div class = "submenu-1">
-                        <ul>
-                            <li>
-                                <form action = "#" th:action = "@{/perform_logout}" method = "post">
-                                    <button type = "submit" class = "logoutButton">Wyloguj</button>
-                                </form>
-                            </li>
-                            <li><a href = "/user/about_me">Moje dane</a></li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
-        </div>
+                        </li>
+                        <li><a href = "/admin/klienci">Klienci</a></li>
+                        <li><a href = "/admin/umowy">Umowy</a></li>
+                        <li><a href = "operatorData">O nas</a></li>
+                        <li>
+                            <b style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b>
+                            <div class = "submenu-1">
+                                <ul>
+                                    <li>
+                                        <form action = "#" th:action = "@{/perform_logout}" method = "post">
+                                        <button type = "submit" class = "logoutButton">Wyloguj</button>
+                                        </form>
+                                    </li>
+                                    <li><a href = "/admin/about_me">Moje dane</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
     </div>
 
     <div class = "content">

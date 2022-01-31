@@ -1,30 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang = "pl" xmlns = "http://www.w3.org/1999/xhtml" xmlns:th = "http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Dane użytkownika</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/css/tableStyle.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
+    <title>Dane</title>
 </head>
-<style>
-    div {
-        height: 200px;
-        width: 400px;
-
-
-        position: fixed;
-        top: 40%;
-        left: 50%;
-        margin-top: -100px;
-        margin-left: -200px;
-    }
-</style>
 <body>
-<div align="center" >
-    <a th:href="@{'/user/edit_klient/'+ ${klient.nrKlienta}}">Edytuj</a> <br/> 
-    Imię: <span th:text="${klient.imie}" >Imie</span><br/>
-    Nazwisko: <span th:text="${klient.nazwisko}">nazwisko</span> <br/>
-    Numer telefonu: <span th:text="${klient.nrTelefonu}">numer telefonu</span> <br/>
-    Data dołączenia: <span th:text="${klient.dataDolaczenia}" >data</span> <br/>
-    Email: <span th:text="${klient.email}">email</span> <br/>
+<div class = "container">
+    <div class = "header">
+        <div class = "navbar">
+            <ul>
+                <li><a href = "/user/main">Strona główna</a></li>
+                <li>Oferta
+                    <div class = "submenu-1">
+                        <ul>
+                            <li><a href = "/user/oferty_internet">Internet</a></li>
+                            <li><a href = "/user/oferty_telewizja">Telewizja</a></li>
+                            <li><a href = "/user/oferty_telefonia">Telefonia</a></li>
+                        </ul>
+                    </div>
+
+                </li>
+                <li><a href = "/user/umowy_klient">Umowy</a></li>
+                <li><a href = "/operatorData">O nas</a></li>
+                <li>
+                    <b style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b>
+                    <div class = "submenu-1">
+                        <ul>
+                            <li>
+                                <form action = "#" th:action = "@{/perform_logout}" method = "post">
+                                    <button type = "submit" class = "logoutButton">Wyloguj</button>
+                                </form>
+                            </li>
+                            <li><a href = "/user/about_me">Moje dane</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class = "content">
+        <div class = "textDiv">
+    <span class = "category">Imię: </span><span th:text="${klient.imie}" >Imie</span><br/>
+    <span class = "category">Nazwisko:</span> <span th:text="${klient.nazwisko}">nazwisko</span> <br/>
+    <span class = "category">Numer telefonu:</span> <span th:text="${klient.nrTelefonu}">numer telefonu</span> <br/>
+    <span class = "category">Data dołączenia:</span> <span th:text="${klient.dataDolaczenia}" >data</span> <br/>
+    <span class = "category">Email:</span> <span th:text="${klient.email}">email</span> <br/>
+    </div>
+    <div class = "newKlientRecord">
+        <a th:href="@{'/user/edit_klient/'+ ${klient.nrKlienta}}"><button type = "button" id = "addButton" class = "addButton">
+            <span class = "editButtonText">Edytuj dane</span>
+            </button></a>
+        </div>
+    </div>
+    <div class = "footer">
+        BDBT 2022, Operator sieci kablowej - Radosław Godlewski, Jakub Wojciechowski
+    </div>
 </div>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
+
+
 </html>

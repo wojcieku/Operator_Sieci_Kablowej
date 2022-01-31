@@ -63,6 +63,8 @@ public class AppController {
     @Autowired
     private KlientDAO klientDAO;
     @Autowired
+    private OperatorzyDAO operatorzyDAO;
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     @RequestMapping(value = {"/","/index"})
@@ -301,25 +303,49 @@ public class AppController {
         model.addAttribute("umowaList",umowaList);
         return "/user/umowy_klient";
     }
-    @RequestMapping("/umowa_szczegoly/{nrOferty}")
+    @RequestMapping("/user/umowa_szczegoly/{nrOferty}")
     public ModelAndView showDetails(@PathVariable(name = "nrOferty") int nrOferty){
         String type = ofertaInternetDAO.checkTypeOfOffer(nrOferty);
         System.out.println(type);
         System.out.println(nrOferty);
         if(type.equals("Internet")){
-            ModelAndView mav = new ModelAndView("umowa_szczegoly_internet");
+            ModelAndView mav = new ModelAndView("/user/umowa_szczegoly_internet");
             OfertaInternet ofertaInternet = ofertaInternetDAO.get(nrOferty);
             mav.addObject("ofertaInternet", ofertaInternet);
             return mav;
         }
         else if(type.equals("Telewizja")){
-            ModelAndView mav = new ModelAndView("umowa_szczegoly_telewizja");
+            ModelAndView mav = new ModelAndView("/user/umowa_szczegoly_telewizja");
             OfertaTelewizja ofertaTelewizja = ofertaTelewizjaDAO.get(nrOferty);
             mav.addObject("ofertaTelewizja", ofertaTelewizja);
             return mav;
         }
         else {
-            ModelAndView mav = new ModelAndView("umowa_szczegoly_telefonia");
+            ModelAndView mav = new ModelAndView("/user/umowa_szczegoly_telefonia");
+            OfertaTelefonia ofertaTelefonia = ofertaTelefoniaDAO.get(nrOferty);
+            mav.addObject("ofertaTelefonia", ofertaTelefonia);
+            return mav;
+        }
+    }
+    @RequestMapping("/admin/umowa_szczegoly/{nrOferty}")
+    public ModelAndView showDetailsAdmin(@PathVariable(name = "nrOferty") int nrOferty){
+        String type = ofertaInternetDAO.checkTypeOfOffer(nrOferty);
+        System.out.println(type);
+        System.out.println(nrOferty);
+        if(type.equals("Internet")){
+            ModelAndView mav = new ModelAndView("/admin/umowa_szczegoly_internet");
+            OfertaInternet ofertaInternet = ofertaInternetDAO.get(nrOferty);
+            mav.addObject("ofertaInternet", ofertaInternet);
+            return mav;
+        }
+        else if(type.equals("Telewizja")){
+            ModelAndView mav = new ModelAndView("/admin/umowa_szczegoly_telewizja");
+            OfertaTelewizja ofertaTelewizja = ofertaTelewizjaDAO.get(nrOferty);
+            mav.addObject("ofertaTelewizja", ofertaTelewizja);
+            return mav;
+        }
+        else {
+            ModelAndView mav = new ModelAndView("/admin/umowa_szczegoly_telefonia");
             OfertaTelefonia ofertaTelefonia = ofertaTelefoniaDAO.get(nrOferty);
             mav.addObject("ofertaTelefonia", ofertaTelefonia);
             return mav;
@@ -346,6 +372,7 @@ public class AppController {
         model.addAttribute("ofertaTelefoniaList", ofertaTelefoniaList);
         return "/user/oferty_telefonia_klient";
     }
+
     @RequestMapping("/user/oferty_telewizja")
     public String displayTvOffers(Model model){
         List<OfertaTelewizja> ofertaTelewizjaList = ofertaTelewizjaDAO.list();
@@ -380,6 +407,16 @@ public class AppController {
         return "/admin/klienci";
     }
 
+    @RequestMapping("/admin/new_klient")
+    public String ShowNewKlientAdminForm(Model model) {
+        Klient klient = new Klient();
+        Adres adres = new Adres();
+        Poczta poczta = new Poczta();
+        model.addAttribute(klient);
+        model.addAttribute(adres);
+        model.addAttribute(poczta);
+        return "/admin/new_klient";
+    }
     @RequestMapping("/new_klient")
     public String ShowNewKlientForm(Model model) {
         Klient klient = new Klient();
@@ -388,7 +425,7 @@ public class AppController {
         model.addAttribute(klient);
         model.addAttribute(adres);
         model.addAttribute(poczta);
-        return "/admin/new_klient";
+        return "/new_klient";
     }
 
     @RequestMapping(value = "/admin/save_klient", method = RequestMethod.POST) //TODO hashowanie hasla
@@ -419,7 +456,7 @@ public class AppController {
         klient.setCzyAktywne("1");
         klient.setAuthority("USER");
         klientDAO.save(klient);
-        return "redirect:/index";
+        return "redirect:/login";
     }
 
     @RequestMapping("/admin/edit_klient/{nrKlienta}") //TODO trzeba dodatkowy widok dla klienta
@@ -442,7 +479,7 @@ public class AppController {
         if (id != nrKlienta) {
             throw new org.springframework.security.access.AccessDeniedException("403 returned");
         }
-        ModelAndView mav = new ModelAndView("/admin/edit_klient");
+        ModelAndView mav = new ModelAndView("/user/edit_klient");
         Klient klient = klientDAO.get(nrKlienta);
         AdresExtended adresExtended = adresDAO.get(klient.getNrAdresu());
         Poczta poczta = new Poczta(adresExtended.getNrPoczty(), adresExtended.getKodPocztowy(), adresExtended.getPoczta());
@@ -499,5 +536,13 @@ public class AppController {
         Klient klient = klientDAO.get(id);
         model.addAttribute("klient", klient);
         return "/user/klient_info";
+    }
+    @RequestMapping("/admin/about_me")
+    public String getInfoOfClientAdmin(Model model){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        int id = klientDAO.getClientIdByEmail(authentication.getName());
+        Klient klient = klientDAO.get(id);
+        model.addAttribute("klient", klient);
+        return "/admin/klient_info";
     }
 }

@@ -78,7 +78,7 @@ body
 }
 .navbar ul li
 {
-    width: 120px;
+    width: 170px;
     margin: 15px;
     padding: 15px;
 }
@@ -265,4 +265,45 @@ a
 .addButton:active
 {
     background: #00427a;
+}
+.editButtonText
+{
+    color: #ffffff;
+    margin: auto;
+    font-size: 20px;
+}
+#detailsButton
+{
+    background: #22649c;
+    outline: none;
+    
+}
+#detailsButton:hover
+{
+    background: #11538b;
+    
+}
+#detailsButton:active
+{
+    background: #00427a;
+}
+.textDiv
+{
+    position: absolute;
+    align-items: center;
+    top: 30%;
+    left: 35%;
+    font-size: 20px;
+
+}
+.category
+{
+    color: #22649c;
+    font-weight: bold;
+}
+.newKlientRecord
+{
+    position: absolute;
+    top: 60%;
+    left: 40%;
 }

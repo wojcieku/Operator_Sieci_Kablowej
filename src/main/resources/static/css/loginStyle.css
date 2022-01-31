@@ -1,19 +1,9 @@
-<!Doctype HTML>
-<html lang = "pl" xmlns = "http://www.w3.org/1999/xhtml" xmlns:th = "http://www.thymeleaf.org">
-    <head>
-    <meta charset="utf-8">
-    <title>Logowanie</title>
-        <link rel="stylesheet" type="text/css" href="loginStyle.css">
-        <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
-    </head>
-    <body>
-        <style>
-        body{
+body{
     margin: 0;
     padding: 0;
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
     font-family: 'Montserrat', sans-serif;
-    background: #22649c;
+    background: linear-gradient(120deg, #2980b9, #8e44ad);
     height: 100vh;
     overflow: hidden;
 }
@@ -114,34 +104,4 @@ input[type="submit"]:hover{
 }
 .signup_link a:hover{
     text-decoration: underline;
-}</style>
-        
-        
-        
-        
-    <div class="center">
-        <h1>Logowanie</h1>
-        <form method="post" th:action="@{/login}">
-        <div class="txt_field">
-            <input type="text" name="username" required>
-            <span></span>
-            <label>Nazwa użytkownika</label>
-            </div>
-            <div class="txt_field">
-            <input type="password" name="password" required>
-            <span></span>
-            <label>Hasło</label>
-            </div>
-            <div class="pass">Zapomniałeś hasła?</div>
-            <input type="submit" value="Zaloguj">
-            <div th:if="${param.error}" style="color:red; margin-bottom:15px">
-                Nieprawidłowa nazwa użytkownika lub hasło!
-                </div>
-            <div class="signup_link">
-            Nie masz konta?<a href="/new_klient">Zarejestruj</a>
-            </div>
-        </form>
-        </div>
-    
-    </body>
-</html>
+}

@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href="/css/newFormStyle.css">
 <!--<meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+<title>Nowa oferta</title>
 </head>
 <body>
     <div class = "container">
@@ -28,7 +29,12 @@
                             <b style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b>
                             <div class = "submenu-1">
                                 <ul>
-                                    <li><a href = "/perform_logout">Wyloguj</a></li>
+                                    <li>
+                                        <form action = "#" th:action = "@{/perform_logout}" method = "post">
+                                        <button type = "submit" class = "logoutButton">Wyloguj</button>
+                                        </form>
+                                    </li>
+                                    <li><a href = "/admin/about_me">Moje dane</a></li>
                                 </ul>
                             </div>
                         </li>

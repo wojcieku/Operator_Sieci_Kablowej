@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang = "pl" xmlns = "http://www.w3.org/1999/xhtml" xmlns:th = "http://www.thymeleaf.org">
 <head>
-<meta charset="utf-8">
-<link rel="stylesheet" type="text/css" href="/css/tableStyle.css">
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
-    <title>Strona główna</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/css/tableStyle.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
+    <title>Szczegóły</title>
 </head>
 <body>
 <div class = "container">
-                <div class = "header">
+    <div class = "header">
                     <div class = "navbar">
                     <ul>
                         <li><a href = "/admin/main">Strona główna</a></li>
@@ -40,17 +40,26 @@
                         </li>
                     </ul>
                 </div>
-            </div>
+    </div>
 
     <div class = "content">
-        <h1>Witaj <span>[[${#httpServletRequest.remoteUser}]]</span></h1>
-        <h1>Twoja rola to: Administrator</h1>
+        <div class = "textDiv">
+ <span class = "category">Numer oferty:</span> <span th:text="${ofertaInternet.nrOferty}">numer oferty</span> <br/>
+ <span class = "category">Typ internetu:</span> <span th:text="${ofertaInternet.typInternetu}">typ internetu</span> <br/>
+ <span class = "category">Prędkość pobierania [Mb]: </span><span th:text = "${ofertaInternet.predkoscPobieraniaWMb}">Prędkośc pobierania [Mb/s]</span> <br/>
+ <span class = "category">Prędkość wysyłania [Mb]:</span> <span th:text = "${ofertaInternet.predkoscWysylaniaWMb}">Prędkośc wysyłania [Mb/s]</span> <br/>
+ <span class = "category">Limit transferu [GB]:</span> <span th:text = "${ofertaInternet.limitTransferu}">brak</span> <br/>
+ <span class = "category">Czas trwania:</span> <span th:text = "${ofertaInternet.czasTrwania}">Czas trwania</span> <br/>
+ <span class = "category">Cena [zł]: </span><span th:text = "${ofertaInternet.cena}">Cena</span> <br/>
+ <span class = "category">Dodatki do umowy:</span> <span th:text = "${ofertaInternet.dodatkiDoUmowy}">Dodatki do umowy</span> <br/>
+ <span class = "category">Koszt wypowiedzenia [zł]:</span> <span th:text = "${ofertaInternet.kosztWypowiedzenia}">Koszt wypowiedzenia</span> <br/>
+    </div>
     </div>
     <div class = "footer">
-    BDBT 2022, Operator sieci kablowej - Radosław Godlewski, Jakub Wojciechowski 
+        BDBT 2022, Operator sieci kablowej - Radosław Godlewski, Jakub Wojciechowski
     </div>
 </div>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 

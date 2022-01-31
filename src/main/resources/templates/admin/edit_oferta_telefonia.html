@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href="/css/editFormStyle.css">
+<title>Edycja oferty</title>
 <!--<meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 </head>
 <body>
@@ -28,7 +29,12 @@
                             <b style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b>
                             <div class = "submenu-1">
                                 <ul>
-                                    <li><a href = "/perform_logout">Wyloguj</a></li>
+                                    <li>
+                                        <form action = "#" th:action = "@{/perform_logout}" method = "post">
+                                        <button type = "submit" class = "logoutButton">Wyloguj</button>
+                                        </form>
+                                    </li>
+                                    <li><a href = "/admin/about_me">Moje dane</a></li>
                                 </ul>
                             </div>
                         </li>

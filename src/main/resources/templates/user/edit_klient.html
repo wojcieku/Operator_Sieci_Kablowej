@@ -11,30 +11,26 @@
                 <div class = "header">
                     <div class = "navbar">
                     <ul>
-                        <li><a href = "/admin/main">Strona główna</a></li>
+                        <li><a href = "/user/main">Strona główna</a></li>
                         <li>Oferta
                         <div class = "submenu-1">
                                 <ul>
-                                    <li><a href = "/admin/oferty_internet">Internet</a></li>
-                                    <li><a href = "/admin/oferty_telewizja">Telewizja</a></li>
-                                    <li><a href = "/admin/oferty_telefonia">Telefonia</a></li>
+                                    <li><a href = "/user/oferty_internet">Internet</a></li>
+                                    <li><a href = "/user/oferty_telewizja">Telewizja</a></li>
+                                    <li><a href = "/user/oferty_telefonia">Telefonia</a></li>
                                 </ul>
                             </div>
 
                         </li>
-                        <li><a href = "/admin/klienci">Klienci</a></li>
-                        <li><a href = "/admin/umowy">Umowy</a></li>
+                        
+                        <li><a href = "/user/umowy_klient">Umowy</a></li>
                         <li><a href = "operatorData">O nas</a></li>
                         <li>
                             <b style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b>
                             <div class = "submenu-1">
                                 <ul>
-                                    <li>
-                                        <form action = "#" th:action = "@{/perform_logout}" method = "post">
-                                        <button type = "submit" class = "logoutButton">Wyloguj</button>
-                                        </form>
-                                    </li>
-                                    <li><a href = "/admin/about_me">Moje dane</a></li>
+                                    <li><a href = "/perform_logout">Wyloguj</a></li>
+                                    <li><a href = "/user/about_me">Moje dane</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -50,20 +46,6 @@
             <form action = "#" th:action = "@{/update_klient}" method = "post">
                 <div class = "selectDetails">
                         <div class = "inputSelect">
-                            <span class = "selectTitle">Rola</span>
-                            <select id = "dodatkiDoUmowy" th:value = "${klient.authority}" name = "authority" required>
-                            <option value = "USER">User</option>
-                            <option value = "ADMIN">Admin</option>
-                            </select>
-                        </div>
-                        <div class = "inputSelect">
-                            <span class = "selectTitle">Aktywna umowa</span>
-                            <select id = "dodatkiDoUmowy" th:value = "${klient.aktywnaUmowa}" name = "aktywnaUmowa" required>
-                                <option value = "N">Nie</option>
-                                <option value = "T">Tak</option>
-                            </select>
-                        </div>
-                        <div class = "inputSelect">
                             <span class = "selectTitle">Aktywne konto</span>
                             <select id = "dodatkiDoUmowy" th:value = "${klient.czyAktywne}" name = "czyAktywne" required>
                                 <option value = "T">Tak</option>
@@ -77,12 +59,20 @@
                         <input type = "Number" th:value = "${klient.nrKlienta}" name = "nrKlienta" readonly = "readonly" required>
                     </div>
                     <div class = "inputBox">
+                        <span class = "details">Rola</span>
+                        <input type = "text" th:value = "${klient.authority}" name = "authority" readonly = "readonly" required>
+                    </div>
+                    <div class = "inputBox">
+                        <span class = "details">Aktywna umowa</span>
+                        <input type = "text" th:value = "${klient.aktywnaUmowa}" name = "aktywnaUmowa" readonly = "readonly" required>
+                    </div>
+                    <div class = "inputBox">
                         <span class = "details">Imię</span>
-                        <input type = "text" th:value = "${klient.imie}" name = "imie" placeholder = "Podaj imię" required>
+                        <input type = "text" th:value = "${klient.imie}" name = "imie" placeholder = "Podaj imię" readonly = "readonly" required>
                     </div>
                     <div class = "inputBox">
                         <span class = "details">Nazwisko</span>
-                        <input type = "text" th:value = "${klient.nazwisko}" name = "nazwisko" placeholder = "Podaj nazwisko" required>
+                        <input type = "text" th:value = "${klient.nazwisko}" name = "nazwisko" placeholder = "Podaj nazwisko" readonly = "readonly" required>
                     </div>
                     <div class = "inputBox">
                         <span class = "details">Numer telefonu</span>
@@ -90,19 +80,19 @@
                     </div>
                     <div class = "inputBox">
                         <span class = "details">Seria i numer dowodu osobistego</span>
-                        <input type = "Text" th:value = "${klient.nrDowodu}" name = "nrDowodu" placeholder = "Podaj serię i numer dowodu osobistego">
+                        <input type = "Number" th:value = "${klient.nrDowodu}" name = "nrDowodu" placeholder = "Podaj serię i numer dowodu osobistego" readonly = "readonly">
                     </div>
                     <div class = "inputBox">
                         <span class = "details">Numer PESEL</span>
-                        <input type = "Number" th:value = "${klient.pesel}" name = "pesel" placeholder = "Podaj numer PESEL">
+                        <input type = "Number" th:value = "${klient.pesel}" name = "pesel" placeholder = "Podaj numer PESEL" readonly = "readonly">
                     </div>
                     <div class = "inputBox">
                         <span class = "details">Numer paszportu</span>
-                        <input type = "text" th:value = "${klient.nrPaszportu}" name = "nrPaszportu" placeholder = "Podaj numer paszportu">
+                        <input type = "text" th:value = "${klient.nrPaszportu}" name = "nrPaszportu" placeholder = "Podaj numer paszportu" readonly = "readonly">
                     </div>
                     <div class = "inputBox">
                         <span class = "details">Adres e-mail</span>
-                        <input type = "text" th:value = "${klient.email}" name = "email" placeholder = "Podaj adres e-mail" required>
+                        <input type = "text" th:value = "${klient.email}" name = "email" placeholder = "Podaj adres e-mail" readonly = "readonly" required>
                     </div>
                     <div class = "inputBox">
                         <span class = "details">Hasło</span>

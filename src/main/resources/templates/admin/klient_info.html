@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang = "pl" xmlns = "http://www.w3.org/1999/xhtml" xmlns:th = "http://www.thymeleaf.org">
 <head>
-<meta charset="utf-8">
-<link rel="stylesheet" type="text/css" href="/css/tableStyle.css">
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
-    <title>Strona główna</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/css/tableStyle.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
+    <title>Dane</title>
 </head>
 <body>
 <div class = "container">
-                <div class = "header">
+    <div class = "header">
                     <div class = "navbar">
                     <ul>
                         <li><a href = "/admin/main">Strona główna</a></li>
@@ -24,7 +24,7 @@
                         </li>
                         <li><a href = "/admin/klienci">Klienci</a></li>
                         <li><a href = "/admin/umowy">Umowy</a></li>
-                        <li><a href = "operatorData">O nas</a></li>
+                        <li><a href = "/operatorData">O nas</a></li>
                         <li>
                             <b style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b>
                             <div class = "submenu-1">
@@ -40,17 +40,27 @@
                         </li>
                     </ul>
                 </div>
-            </div>
+    </div>
 
     <div class = "content">
-        <h1>Witaj <span>[[${#httpServletRequest.remoteUser}]]</span></h1>
-        <h1>Twoja rola to: Administrator</h1>
+        <div class = "textDiv">
+    <span class = "category">Imię: </span><span th:text="${klient.imie}" >Imie</span><br/>
+    <span class = "category">Nazwisko:</span> <span th:text="${klient.nazwisko}">nazwisko</span> <br/>
+    <span class = "category">Numer telefonu:</span> <span th:text="${klient.nrTelefonu}">numer telefonu</span> <br/>
+    <span class = "category">Data dołączenia:</span> <span th:text="${klient.dataDolaczenia}" >data</span> <br/>
+    <span class = "category">Email:</span> <span th:text="${klient.email}">email</span> <br/>
+    </div>
+    <div class = "newKlientRecord">
+        <a th:href="@{'/admin/edit_klient/'+ ${klient.nrKlienta}}"><button type = "button" id = "addButton" class = "addButton">
+            <span class = "editButtonText">Edytuj dane</span>
+            </button></a>
+        </div>
     </div>
     <div class = "footer">
-    BDBT 2022, Operator sieci kablowej - Radosław Godlewski, Jakub Wojciechowski 
+        BDBT 2022, Operator sieci kablowej - Radosław Godlewski, Jakub Wojciechowski
     </div>
 </div>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
