@@ -58,7 +58,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/update_klient").hasAnyAuthority("ADMIN", "USER")
                 .anyRequest().authenticated()
                 .and()
-                .formLogin()
+                .formLogin() 
                 .loginPage("/login")
                 .permitAll()
                 .successHandler(myAuthenticationSuccessHandler())

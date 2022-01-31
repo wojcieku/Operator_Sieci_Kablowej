@@ -502,7 +502,7 @@ public class AppController {
             return "redirect:/admin/klienci";
         }
         else if(authority.equals("USER")){
-            return "redirect:/user/usermain";
+            return "redirect:/user/main";
         }
         return null;
     }
