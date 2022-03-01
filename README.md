@@ -21,5 +21,5 @@ Technologies used:
 <!-->
 The application allows to view, edit, add and delete data from database that it is connected to. Admin has access to all tables and all operations, 
 whereas client can access only his own data and perform only bunch of operations (for example he can sign an agreement, but he cannot edit nor delete it). 
-Access is controlled by Spring Security and user can registrate or simply log in. Authentication is based on data in database; all passwords are hashed using bcrypt function.
+Access is controlled by Spring Security and user can registrate or simply log in, if he has an existing account. Authentication is based on data in database; all passwords are hashed using bcrypt function.
 In most cases displayed data is retrieved from multiple tables and in one case from tables that are extension for table storing data about offers (Internet, TV, telephony).
